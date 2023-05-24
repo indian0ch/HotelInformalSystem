@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Reservation from "./components/Reservation/Reservation";
 import Review from "./components/Review/Review";
 import Workers from "./components/Workers/Workers";
+import Payments from "./components/Payments/Payments";
 import styled from "./App.module.css";
 
 const App = () => {
@@ -15,6 +16,9 @@ const App = () => {
       </section>
       <section>
         <Workers></Workers>
+      </section>
+      <section>
+        <Payments></Payments>
       </section>
     </div>
   );
