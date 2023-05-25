@@ -8,7 +8,7 @@
     width: 90%;
     max-width: 40rem;
   }
-  .reservationContainer h2 {
+  .reservationContainer h2,p {
     display: block;
     font-weight: bold;
     margin-bottom: 0.5rem;
@@ -37,5 +37,5 @@
   .sectionBox {
     display: block;
     margin-bottom: 0.5rem;
-    
+    height: 1.9rem;
   }

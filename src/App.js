@@ -12,7 +12,7 @@ const App = () => {
       <section className={styled.goalform}>
         <Reservation></Reservation>
       </section>
-      <section className={styled.goal}>
+      <section className={styled.goalform}>
         <Review></Review>
       </section>
       <section>
