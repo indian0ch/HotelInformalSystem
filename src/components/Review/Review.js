@@ -1,20 +1,91 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Review.module.css";
-import { HotelAdministration, Residents } from './ReviewObserver.js';
-
+import { HotelAdministration, Residents } from "./ReviewObserver.js";
+import Button from "../UI/Button/Button";
 
 const Review = (props) => {
-    const adm=new HotelAdministration();
-    const res=new Residents();
-    const res1=new Residents();
+  const [residentName, setResidentName] = useState("");
+  const [reviewText, setReviewText] = useState("");
+  const [reviewerName, setReviewerName] = useState("Andrii Fesiuk");
+  const [reviewerLevel, setReviewerLevel] = useState("0");
+  function onChangeResidentNameHandler(event) {
+    setResidentName(event.target.value);
+  }
+  function onChangeAreaHandler(event) {
+    setReviewText(event.target.value);
+  }
+  function onChangeSelectHandler(event) {
+    setReviewerName(event.target.value);
+  }
+  function onChangeLevelHandler(event) {
+    setReviewerLevel(event.target.value);
+  }
+  function onSubmitFormHandler(event) {
+    event.preventDefault();
+    const administator = new HotelAdministration(reviewerName);
+    const resident = new Residents(residentName, reviewText);
+    resident.Attach(administator);
+    resident.SatisfactionLevelSet = reviewerLevel;
+  }
 
-     res.Attach(adm);
-     res.SatisfactionLevelSet=2;
-
-     res1.Attach(adm);
-     res1.SatisfactionLevelSet=33;
-  return <div className={styles.reviewContainer}>
-      <p>Hello</p>
-  </div>
+  return (
+    <div className={styles.reviewContainer}>
+      <h2>Review section</h2>
+      <form onSubmit={onSubmitFormHandler}>
+        <label htmlFor="reviewT">Your full-name:</label>
+        <input
+          type="text"
+          placeholder="Andrii Fesik"
+          onChange={onChangeResidentNameHandler}
+        ></input>
+        <label htmlFor="reviewT">Write your review about the Hotel:</label>
+        <textarea
+          type="text"
+          name="reviewT"
+          placeholder="Review's text"
+          onChange={onChangeAreaHandler}
+        ></textarea>
+        <div className={styles.reviewerSection}>
+          <label
+            className={styles.reviewSelectLabel}
+            style={{ display: "inline" }}
+          >
+            Choose reviewer:
+          </label>
+          <select
+            onChange={onChangeSelectHandler}
+            className={styles.reviewSelect}
+          >
+            <option value="Andrii Fesiuk">Andrii Fesiuk, Principle</option>
+            <option value="Stepan Bander">
+              Stepan Bander, Host-Administartor
+            </option>
+          </select>
+        </div>
+        <div className={styles.levelSection}>
+          <label
+            className={styles.reviewSelectLabel}
+            style={{ display: "inline" }}
+          >
+            Choose satisfaction level:
+          </label>
+          <select
+            onChange={onChangeLevelHandler}
+            className={styles.reviewSelect}
+          >
+            <option value="0">Select</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+          </select>
+        </div>
+        <Button type="submit" style={{ margin: "0" }}>
+          Send review
+        </Button>
+      </form>
+    </div>
+  );
 };
 export default Review;
