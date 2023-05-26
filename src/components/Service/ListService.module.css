@@ -1,0 +1,38 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap");
+*,
+*:after,
+*:before {
+  box-sizing: border-box;
+}
+
+.bod {
+  font-family: "Inter", sans-serif;
+
+}
+
+.checkbox-group {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 600px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.checkbox-group > * {
+  margin: 0.5rem 0.5rem;
+}
+
+.checkbox-group-legend {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #9c9c9c;
+  text-align: center;
+  line-height: 1.125;
+  margin-bottom: 1.25rem;
+}
+

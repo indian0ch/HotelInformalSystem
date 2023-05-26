@@ -18,8 +18,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.ConferenceHallDecorator = exports.FitnessDecorator = exports.FreeParkingDecorator = exports.DinnerDecorator = exports.LaunchDecorator = exports.Decorator = exports.BaseComponent = void 0;
 var BaseComponent = /** @class */ (function () {
     function BaseComponent(price, amount) {
-        if (price === void 0) { price = 50; }
-        if (amount === void 0) { amount = 50; }
+        if (price === void 0) { price = 0; }
+        if (amount === void 0) { amount = 0; }
         this.price = price;
         this.amount = amount;
     }
@@ -50,7 +50,7 @@ var LaunchDecorator = /** @class */ (function (_super) {
     __extends(LaunchDecorator, _super);
     function LaunchDecorator() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.price = 20;
+        _this.price = 30;
         return _this;
     }
     LaunchDecorator.prototype.operation = function () {
@@ -69,7 +69,7 @@ var DinnerDecorator = /** @class */ (function (_super) {
     __extends(DinnerDecorator, _super);
     function DinnerDecorator() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.price = 20;
+        _this.price = 45;
         return _this;
     }
     DinnerDecorator.prototype.operation = function () {
@@ -88,7 +88,7 @@ var FreeParkingDecorator = /** @class */ (function (_super) {
     __extends(FreeParkingDecorator, _super);
     function FreeParkingDecorator() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.price = 20;
+        _this.price = 15;
         return _this;
     }
     FreeParkingDecorator.prototype.operation = function () {
@@ -107,7 +107,7 @@ var FitnessDecorator = /** @class */ (function (_super) {
     __extends(FitnessDecorator, _super);
     function FitnessDecorator() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.price = 20;
+        _this.price = 60;
         return _this;
     }
     FitnessDecorator.prototype.operation = function () {
@@ -126,7 +126,7 @@ var ConferenceHallDecorator = /** @class */ (function (_super) {
     __extends(ConferenceHallDecorator, _super);
     function ConferenceHallDecorator() {
         var _this = _super !== null && _super.apply(this, arguments) || this;
-        _this.price = 20;
+        _this.price = 77;
         return _this;
     }
     ConferenceHallDecorator.prototype.operation = function () {
