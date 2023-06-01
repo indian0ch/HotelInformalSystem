@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Review.module.css";
-import { HotelAdministration, Residents } from "./ReviewObserver.js";
+import { HotelAdministration, Residents } from "./ReviewObserver.ts";
 import Button from "../UI/Button/Button";
 
 const Review = (props) => {

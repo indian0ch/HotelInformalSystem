@@ -7,7 +7,7 @@ import {
   FreeParkingDecorator,
   FitnessDecorator,
   ConferenceHallDecorator,
-} from "./ServiceDecorator.js";
+} from "./ServiceDecorator.ts";
 import Button from "../UI/Button/Button";
 import ListService from "./ListService";
 

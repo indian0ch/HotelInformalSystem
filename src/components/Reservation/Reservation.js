@@ -5,7 +5,7 @@ import {
   StandartReservation,
   MiddleReservation,
   LuxuryReservation,
-} from "./ReservationStrategy.js";
+} from "./ReservationStrategy.ts";
 import Button from "../UI/Button/Button.js";
 
 const Reservation = (props) => {

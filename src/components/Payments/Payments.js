@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Payments.module.css";
-import { Composite, poolPayment } from "./PaymentsComposite.js";
+import { Composite, poolPayment } from "./PaymentsComposite.ts";
 
 const Payments = (props) => {
   // const spa = new Composite(); // Pass the desired arguments to the constructor
