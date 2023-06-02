@@ -26,9 +26,9 @@ const Login = (props) => {
   return (
     <div className={styles.formbg}>
       <div className={styles["padding-horizontal--48"]}>
-        <span className={styles["padding-bottom--15"]}>
-          Sign into your account
-        </span>
+      <div className={styles.loginHeader}>
+          <span>Sign into your account</span>
+        </div>
         <form id="stripe-login">
           <div className={styles["padding-bottom--24"]}>
             <label htmlFor="email">Email</label>

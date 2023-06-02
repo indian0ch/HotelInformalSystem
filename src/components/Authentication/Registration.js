@@ -29,7 +29,9 @@ const Registration = (props) => {
   return (
     <div className={styles.formbg}>
       <div className={styles["padding-horizontal--48"]}>
-        <span className={styles["padding-bottom--15"]}>Register a new profile</span>
+        <div className={styles.registerHeader}>
+          <span>Register a new profile</span>
+        </div>
         <form id="stripe-login">
           <div className={styles.inputBlock}>
             <label htmlFor="email">Email</label>
