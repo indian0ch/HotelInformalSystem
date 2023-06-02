@@ -29,7 +29,7 @@ export class AuthenticationService {
 
   login(username: string, password: string): void {
     const user = this.users.find(
-      (u) => u.username === username && u.password === password
+      (person) => person.username === username && person.password === password
     );
     if (user) {
       console.log(`User "${username}" logged in successfully!`);

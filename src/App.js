@@ -13,6 +13,9 @@ const App = () => {
       <section className={styled.goalform}>
         <Reservation></Reservation>
       </section>
+      <section>
+        <Authentication />
+      </section>
       <section className={styled.goalform}>
         <Review></Review>
       </section>
@@ -24,9 +27,6 @@ const App = () => {
       </section>
       <section>
         <Service />
-      </section>
-      <section>
-        <Authentication />
       </section>
     </div>
   );

@@ -1,0 +1,90 @@
+.formbg {
+    margin: 0px auto;
+    width: 100%;
+    max-width: 490px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    animation: slide-in 0.5s ease-in-out;
+}
+
+.formbg span {
+    display: block;
+    font-size: 20px;
+    line-height: 28px;
+    color: #36261a;
+}
+
+.padding-horizontal--48 {
+    padding: 48px;
+}
+
+.padding-bottom--15 {
+    padding-bottom: 15px;
+}
+
+.inputBlock {
+    padding-bottom: 24px;
+}
+
+.inputBlock input {
+    font-size: 16px;
+    line-height: 28px;
+    padding: 8px 16px;
+    width: 100%;
+    min-height: 44px;
+    border: unset;
+    outline-color: rgba(212, 148, 84, 0.5);
+    background-color: rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
+}
+
+.chechbox_styling {
+    display: flex;
+    align-items: center;
+    padding-bottom: 15px;
+    flex-basis: 10%;
+}
+
+.chechbox_styling label {
+    flex-basis: 60%;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.chechbox_styling input {
+    width: 20px;
+    height: 15px;
+    margin-right: 5px;
+    box-shadow: unset;
+    min-height: unset;
+}
+
+.field span {
+    font-size: 14px;
+    text-align: center;
+}
+
+.field a {
+    text-decoration: none;
+}
+
+.forgot-password {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    align-items: center;
+}
+
+.forgot-password a,
+label {
+    font-size: 14px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+    text-decoration: none;
+}
+
+.forgot-password a {
+    color: rgb(84, 105, 212);
+}
