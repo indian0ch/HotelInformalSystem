@@ -29,7 +29,7 @@ const Registration = (props) => {
   return (
     <div className={styles.formbg}>
       <div className={styles["padding-horizontal--48"]}>
-        <span className={styles["padding-bottom--15"]}>Register a profile</span>
+        <span className={styles["padding-bottom--15"]}>Register a new profile</span>
         <form id="stripe-login">
           <div className={styles.inputBlock}>
             <label htmlFor="email">Email</label>
@@ -57,13 +57,6 @@ const Registration = (props) => {
               value={registerPasswordConfirm}
               onChange={onChangePasswordConfirmHandler}
             ></input>
-          </div>
-          <div className={styles.chechbox_styling}>
-            <label htmlFor="checkbox">
-              {" "}
-              <input type="checkbox" name="checkbox"></input> Stay signed in for
-              a week
-            </label>
           </div>
           <div className={styles["padding-bottom--24"]}>
             <Button onClick={onClickRegisterHandler}>Register</Button>

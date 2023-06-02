@@ -60,9 +60,7 @@ const Login = (props) => {
               a week
             </label>
           </div>
-          <div className={styles["padding-bottom--24"]}>
-            <Button onClick={onContinueHandler}>Continue</Button>
-          </div>
+          <Button onClick={onContinueHandler}>Continue</Button>
           <div className={styles.field}>
             <span>
               Don't have an account?{" "}

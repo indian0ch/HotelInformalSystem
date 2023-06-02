@@ -2,7 +2,7 @@
     margin: 0px auto;
     width: 100%;
     max-width: 490px;
-    background: white;
+    background: rgb(235, 230, 244);
     border-radius: 10px;
     box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
     animation: slide-in 0.5s ease-in-out;
@@ -12,7 +12,8 @@
     display: block;
     font-size: 20px;
     line-height: 28px;
-    color: #36261a;
+    color: #000000;
+    text-align: center;
 }
 
 .padding-horizontal--48 {
@@ -39,27 +40,11 @@
     box-shadow: rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(60, 66, 87, 0.16) 0px 0px 0px 1px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px;
 }
 
-.chechbox_styling {
-    display: flex;
-    align-items: center;
-    padding-bottom: 15px;
-    flex-basis: 10%;
+.inputBlock input:active {
+    border: 1px solid #d76ef2;
+    transition: all 0.1s ease;
 }
 
-.chechbox_styling label {
-    flex-basis: 60%;
-    display: flex;
-    align-items: center;
-    margin: 0;
-}
-
-.chechbox_styling input {
-    width: 20px;
-    height: 15px;
-    margin-right: 5px;
-    box-shadow: unset;
-    min-height: unset;
-}
 
 .field span {
     font-size: 14px;
@@ -68,6 +53,12 @@
 
 .field a {
     text-decoration: none;
+    transition: all 0.1s ease;
+    color: rgb(84, 105, 212);
+}
+
+.field a:hover {
+    color: #e76ff9;
 }
 
 .forgot-password {
