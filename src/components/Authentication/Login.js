@@ -11,6 +11,7 @@ const Login = (props) => {
     props.authServices.login(registerEmail, registerPassword);
     setRegisterEmail("");
     setRegisterPassword("");
+    props.onContinue();
   }
   function onSignUpHandler(event) {
     event.preventDefault();

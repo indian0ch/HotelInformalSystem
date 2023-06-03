@@ -14,19 +14,19 @@ const App = () => {
         <Reservation></Reservation>
       </section>
       <section>
-        <Authentication />
+        <Service />
       </section>
       <section className={styled.goalform}>
         <Review></Review>
+      </section>
+      <section>
+        <Authentication />
       </section>
       <section>
         <Workers></Workers>
       </section>
       <section>
         <Payments></Payments>
-      </section>
-      <section>
-        <Service />
       </section>
     </div>
   );
