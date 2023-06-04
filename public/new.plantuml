@@ -1,38 +1,28 @@
 @startuml
 
-interface IReservationStrategy {
-  +Reservation(): void
-}
-
-class StandartReservation {
-  +Reservation(): void
-}
-
-class MiddleReservation {
-  +Reservation(): void
-}
-
-class LuxuryReservation {
-  +Reservation(): void
-}
-
 class Room {
-  -surname: string
-  -name: string
-  -id: number
-  -city: string
-  +Reserv: IReservationStrategy
-
-  +Room(surname: string = "Fesiuk", name: string = "Andrey", id: number = 3434, city: string = "Kyiv", res: IReservationStrategy = new StandartReservation())
-  +Reservation(): void
+  - id: string
+  - roomNumber: number
+  - checkInDate: Date | null
+  - checkOutDate: Date | null
+  - guestId: string | null
+  - isCleaned: boolean
+  - pricePerNight: number
+  --
+  + Room(id: string, roomNumber: number, pricePerNight: number)
+  + getId(): string
+  + getRoomNumber(): number
+  + getCheckInDate(): Date | null
+  + getCheckOutDate(): Date | null
+  + getGuestId(): string | null
+  + isClean(): boolean
+  + getPricePerNight(): number
+  + checkIn(guestId: string, checkInDate: Date): void
+  + checkOut(): void
+  + cleanRoom(): void
+  + getRooms(): Promise<any>
+  + modifyRoom(modifiedRoom: Room): void
 }
-
-IReservationStrategy <|.. StandartReservation
-IReservationStrategy <|.. MiddleReservation
-IReservationStrategy <|.. LuxuryReservation
-Room o-- IReservationStrategy
 
 @enduml
-
-
 

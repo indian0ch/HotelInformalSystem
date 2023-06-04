@@ -1,245 +1,219 @@
 {
-    "rooms": [{
-            "id": 20,
-            "roomNumber": 101,
-            "checkInDate": "2023-06-04",
-            "checkOutDate": "2023-06-11",
-            "guestId": "8972",
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 1,
-            "roomNumber": 102,
-            "checkInDate": "2023-06-09",
-            "checkOutDate": "2023-06-24",
-            "guestId": "",
-            "isCleaned": false,
-            "pricePerNight": 200,
-            "priceService": 0
-        },
-        {
-            "id": 2,
-            "roomNumber": 103,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 200,
-            "priceService": 0
-        },
-        {
-            "id": 3,
-            "roomNumber": 104,
-            "checkInDate": "2023-06-04",
-            "checkOutDate": "2023-06-11",
-            "guestId": "233223",
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 775
-        },
-        {
-            "id": 4,
-            "roomNumber": 105,
-            "checkInDate": "2023-06-11",
-            "checkOutDate": "2023-06-11",
-            "guestId": "345545",
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 227
-        },
-        {
-            "id": 5,
-            "roomNumber": 106,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 300,
-            "priceService": 0
-        },
-        {
-            "id": 6,
-            "roomNumber": 107,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 7,
-            "roomNumber": 108,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 8,
-            "roomNumber": 109,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 9,
-            "roomNumber": 110,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 10,
-            "roomNumber": 201,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 11,
-            "roomNumber": 202,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 300,
-            "priceService": 0
-        },
-        {
-            "id": 12,
-            "roomNumber": 203,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 13,
-            "roomNumber": 204,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 14,
-            "roomNumber": 205,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 200,
-            "priceService": 0
-        },
-        {
-            "id": 15,
-            "roomNumber": 206,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 16,
-            "roomNumber": 207,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 200,
-            "priceService": 0
-        },
-        {
-            "id": 17,
-            "roomNumber": 208,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        },
-        {
-            "id": 18,
-            "roomNumber": 209,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 200,
-            "priceService": 0
-        },
-        {
-            "id": 19,
-            "roomNumber": 210,
-            "checkInDate": null,
-            "checkOutDate": null,
-            "guestId": null,
-            "isCleaned": false,
-            "pricePerNight": 100,
-            "priceService": 0
-        }
-    ],
-    "guests": [{
-            "id": 223,
-            "name": "Andrii Fesiuk",
-            "email": "den@gmail.com",
-            "phoneNumber": "0302032032"
-        },
-        {
-            "id": 224,
-            "name": "Andrii Fesiuk",
-            "email": "dennomanow@gmail.com",
-            "phoneNumber": "0685087867"
-        },
-        {
-            "id": "8972",
-            "name": "Maks Dav",
-            "email": "mask@gmail.com",
-            "phoneNumber": "098786736"
-        },
-        {
-            "id": "233223",
-            "name": "Stepan B",
-            "email": "mask@gmail.com",
-            "phoneNumber": "09832323"
-        },
-        {
-            "id": "345545",
-            "name": "Stepan B2",
-            "email": "mask@gmail.com",
-            "phoneNumber": "09843434"
-        }
-    ],
-    "workers": [{
-            "id": 1,
-            "postId": 1,
-            "text": "Comment 1"
-        },
-        {
-            "id": 2,
-            "postId": 2,
-            "text": "Comment 2"
-        }
-    ]
+  "rooms": [
+    {
+      "id": 20,
+      "roomNumber": 101,
+      "checkInDate": "2023-06-04",
+      "checkOutDate": "2023-06-11",
+      "guestId": "8972",
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 1,
+      "roomNumber": 102,
+      "checkInDate": "2023-06-09",
+      "checkOutDate": "2023-06-24",
+      "guestId": "",
+      "isCleaned": false,
+      "pricePerNight": 200
+    },
+    {
+      "id": 2,
+      "roomNumber": 103,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 200
+    },
+    {
+      "id": 3,
+      "roomNumber": 104,
+      "checkInDate": "2023-06-04",
+      "checkOutDate": "2023-06-11",
+      "guestId": "233223",
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 4,
+      "roomNumber": 105,
+      "checkInDate": "2023-06-11",
+      "checkOutDate": "2023-06-11",
+      "guestId": "345545",
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 5,
+      "roomNumber": 106,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 300
+    },
+    {
+      "id": 6,
+      "roomNumber": 107,
+      "checkInDate": "2023-06-11",
+      "checkOutDate": "2023-06-18",
+      "guestId": "32323",
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 7,
+      "roomNumber": 108,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 8,
+      "roomNumber": 109,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 9,
+      "roomNumber": 110,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 10,
+      "roomNumber": 201,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 11,
+      "roomNumber": 202,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 300
+    },
+    {
+      "id": 12,
+      "roomNumber": 203,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 13,
+      "roomNumber": 204,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 14,
+      "roomNumber": 205,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 200
+    },
+    {
+      "id": 15,
+      "roomNumber": 206,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 16,
+      "roomNumber": 207,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 200
+    },
+    {
+      "id": 17,
+      "roomNumber": 208,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    },
+    {
+      "id": 18,
+      "roomNumber": 209,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 200
+    },
+    {
+      "id": 19,
+      "roomNumber": 210,
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
+      "isCleaned": false,
+      "pricePerNight": 100
+    }
+  ],
+  "guests": [
+    {
+      "id": 223,
+      "name": "Andrii Fesiuk",
+      "email": "den@gmail.com",
+      "phoneNumber": "0302032032",
+      "priceService": 717
+    },
+    {
+      "id": 224,
+      "name": "Andrii Fesiuk",
+      "email": "dennomanow@gmail.com",
+      "phoneNumber": "0685087867",
+      "priceService": 717
+    },
+    {
+      "id": "32323",
+      "name": "Maks",
+      "email": "mask@gmail.com",
+      "phoneNumber": "0685087867",
+      "priceService": 717
+    }
+  ],
+  "workers": [
+    {
+      "id": 1,
+      "postId": 1,
+      "text": "Comment 1"
+    },
+    {
+      "id": 2,
+      "postId": 2,
+      "text": "Comment 2"
+    }
+  ]
 }

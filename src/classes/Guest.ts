@@ -1,15 +1,23 @@
-const urlJsonGuest = "http://localhost:4000/guests";
+export const urlJsonGuest = "http://localhost:4000/guests";
 export class Guest {
   private id: number;
   private name: string;
   private email: string;
   private phoneNumber: string;
+  private priceService: number;
 
-  constructor(id: number, name: string, email: string, phoneNumber: string) {
+  constructor(
+    id: number,
+    name: string,
+    email: string,
+    phoneNumber: string,
+    priceService: number
+  ) {
     this.id = id;
     this.name = name;
     this.email = email;
     this.phoneNumber = phoneNumber;
+    this.priceService = priceService;
   }
 
   public getId(): number {
@@ -51,4 +59,32 @@ export class Guest {
         console.error(error);
       });
   }
+}
+export function getGuests() {
+  return fetch(urlJsonGuest)
+    .then((response) => response.json())
+    .then((data) => {
+      const users = data; // Assuming the response directly contains the room data
+      //console.log(rooms);
+      return users;
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+}
+export function modifyGuest(id: number, newPriceService:number) {
+  fetch(`${urlJsonGuest}/${id}`, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ priceService: newPriceService }),
+  })
+    .then((response) => response.json())
+    .then((updatedGuest) => {
+      window.alert("Payments success!");
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 }

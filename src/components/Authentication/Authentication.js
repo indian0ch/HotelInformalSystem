@@ -4,6 +4,7 @@ import { Worker, AuthenticationService } from "./AuthenticationSingleton.ts";
 import Login from "./Login";
 import Registration from "./Registration";
 import Profile from "./Profile";
+import Workers from "../Workers/Workers";
 
 const Authentication = (props) => {
   const [isLoginWindowOpen, setIsLoginWindowOpen] = useState(true);

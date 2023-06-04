@@ -7,7 +7,6 @@ export class Room {
   private guestId: string | null;
   private isCleaned: boolean;
   private pricePerNight: number;
-  private priceService: number;
 
   constructor(id: string, roomNumber: number, pricePerNight: number) {
     this.id = id;
@@ -75,7 +74,7 @@ export function getRooms() {
     });
 }
 export function modifyRoom(modifiedRoom: Room) {
-  fetch(`${urlJsonRoom}/${modifiedRoom.id}`, {
+  fetch(`${urlJsonRoom}/${modifiedRoom.getId()}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",
