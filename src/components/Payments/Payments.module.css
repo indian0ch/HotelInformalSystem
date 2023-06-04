@@ -1,3 +1,49 @@
-.paymentsContainer{
+.paymentsContainer {
     background-color: rgb(231, 0, 0);
+}
+
+.paymentsContainer {
+    background-color: rgb(241, 240, 246);
+    border-radius: 20px;
+}
+
+.paymentsContainer {
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+}
+
+.paymentsContainer h2,
+p {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.paymentsContainer label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.paymentsContainer input {
+    font: inherit;
+    display: block;
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 0.15rem;
+    margin-bottom: 0.5rem;
+}
+
+.paymentsContainer input:focus {
+    outline: none;
+    border-color: #4f005f;
+}
+
+.sectionBox {
+    display: block;
+    margin-bottom: 0.5rem;
+    height: 1.9rem;
 }

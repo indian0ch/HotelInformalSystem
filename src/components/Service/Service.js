@@ -46,7 +46,8 @@ const Service = (props) => {
       status: false,
     },
   ];
-  function onSubmitFormSeviceHandler(event) {
+
+  function onClickSevicePriceHandler(event) {
     event.preventDefault();
     let baseService = new BaseComponent();
     let filterArr = clicks.filter((elem) => elem.status === true);
@@ -73,28 +74,28 @@ const Service = (props) => {
         baseService = component;
       }
     }
-    console.log(baseService.operation());
+    alert(baseService.operation());
     setActualPrice(baseService.getAmount());
+    props.sendServices(baseService);
   }
   const onGetDataFromItems = (data) => {
     setClicks(data);
   };
   return (
     <div className={styles.serviceContainer}>
-      <h2>Service's component</h2>
       <p>
         Hotel provided a free breakfast, but it just a start service. <br></br>
         So you can choose additional service on your own)
       </p>
-      <form onSubmit={onSubmitFormSeviceHandler}>
+      <div>
         <ListService
           items={hotelServices}
           sendData={onGetDataFromItems}
         ></ListService>
-        <Button>Check price</Button>
-      </form>
+        <Button onClick={onClickSevicePriceHandler}>Check price</Button>
+      </div>
       <p>
-        <strong>Price:</strong> {actualPrice}$
+        <strong>Price:</strong> {actualPrice}$ for choosen additional component
       </p>
     </div>
   );

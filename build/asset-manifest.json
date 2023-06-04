@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/indian0ch/HotelInformalSystem/static/css/main.e777c573.css",
+    "main.js": "/indian0ch/HotelInformalSystem/static/js/main.b0fbcf04.js",
+    "index.html": "/indian0ch/HotelInformalSystem/index.html",
+    "main.e777c573.css.map": "/indian0ch/HotelInformalSystem/static/css/main.e777c573.css.map",
+    "main.b0fbcf04.js.map": "/indian0ch/HotelInformalSystem/static/js/main.b0fbcf04.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.e777c573.css",
+    "static/js/main.b0fbcf04.js"
+  ]
+}
