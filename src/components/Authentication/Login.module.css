@@ -2,9 +2,8 @@
     margin: 0px auto;
     width: 100%;
     max-width: 490px;
-    background: rgb(235, 230, 244);
     border-radius: 10px;
-    box-shadow: rgba(60, 66, 87, 0.12) 0px 7px 14px 0px, rgba(0, 0, 0, 0.12) 0px 3px 6px 0px;
+    font-weight: 600;
 }
 
 .padding-horizontal--48 {
@@ -17,6 +16,11 @@
 
 .padding-bottom--24 {
     padding-bottom: 24px;
+}
+
+.padding-bottom--24 label {
+    font-weight: 600;
+    padding-bottom: 10px;
 }
 
 .padding-bottom--24 input {
@@ -52,37 +56,9 @@
     box-shadow: unset;
     min-height: unset;
 }
-.field {
-    display: flex;
-    justify-content: space-around;
-}
-
-.field span {
-    font-size: 14px;
-    text-align: center;
-}
 
 .field a {
     text-decoration: none;
-    color: rgb(84, 105, 212);
-}
-
-.forgot-password {
-    display: grid;
-    grid-template-columns: 50% 50%;
-    align-items: center;
-}
-
-.forgot-password a,
-label {
-    font-size: 14px;
-    font-weight: 600;
-    display: block;
-    margin-bottom: 10px;
-    text-decoration: none;
-}
-
-.forgot-password a {
     color: rgb(84, 105, 212);
 }
 
@@ -102,6 +78,7 @@ label {
     padding: 1rem 0rem;
     font-size: 23px;
 }
-.loginHeader:hover{
+
+.loginHeader:hover {
     background-color: rgb(3, 18, 94);
 }

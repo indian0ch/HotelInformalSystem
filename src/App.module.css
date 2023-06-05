@@ -12,3 +12,27 @@
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
   border-radius: 10px;
 }
+.linksColumn{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(117, 113, 239);
+  align-items:center;
+  height:4rem;
+  color: white;
+  
+}
+.linksColumn a{
+  text-decoration: none;
+  border-radius: 20px;
+  color: rgb(247, 247, 247);
+  margin: 0 10px;
+  float: left;
+  font-size: 16px;
+  color: white;
+  padding: 14px 16px;
+}
+.linksColumn a:hover{
+  background-color: rgb(56, 0, 109);
+}
