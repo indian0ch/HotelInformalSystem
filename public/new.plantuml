@@ -1,28 +1,40 @@
 @startuml
 
-class Room {
-  - id: string
-  - roomNumber: number
-  - checkInDate: Date | null
-  - checkOutDate: Date | null
-  - guestId: string | null
-  - isCleaned: boolean
-  - pricePerNight: number
-  --
-  + Room(id: string, roomNumber: number, pricePerNight: number)
-  + getId(): string
-  + getRoomNumber(): number
-  + getCheckInDate(): Date | null
-  + getCheckOutDate(): Date | null
-  + getGuestId(): string | null
-  + isClean(): boolean
-  + getPricePerNight(): number
-  + checkIn(guestId: string, checkInDate: Date): void
-  + checkOut(): void
-  + cleanRoom(): void
-  + getRooms(): Promise<any>
-  + modifyRoom(modifiedRoom: Room): void
+interface PaymentStrategy {
+  + pay(amount: number): void
 }
 
+class CashPaymentStrategy {
+  + pay(amount: number): void
+}
+
+class CreditCardPaymentStrategy {
+  - cardNumber: string
+  - cardExpiration: string
+  - cardCVV: string
+  + constructor(cardNumber: string, cardExpiration: string, cardCVV: string)
+  + pay(amount: number): void
+}
+
+class PayPalPaymentStrategy {
+  - paypalUsername: string
+  - paypalPassword: string
+  + constructor(paypalUsername: string, paypalPassword: string)
+  + pay(amount: number): void
+}
+class Client{
+
+}
+
+PaymentStrategy <-- Client
+CashPaymentStrategy <.. Client
+CreditCardPaymentStrategy <.. Client
+PayPalPaymentStrategy <.. Client
+PaymentStrategy <|.. CashPaymentStrategy
+PaymentStrategy <|.. CreditCardPaymentStrategy
+PaymentStrategy <|.. PayPalPaymentStrategy
+
 @enduml
+
+
 

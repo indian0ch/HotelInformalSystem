@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import Reservation from "./components/Reservation/Reservation";
 import Review from "./components/Review/Review";
-import Workers from "./components/Workers/Workers";
 import Payments from "./components/Payments/Payments";
 import Authentication from "./components/Authentication/Authentication";
 import styled from "./App.module.css";
@@ -19,11 +18,11 @@ const App = () => {
         <Review></Review>
       </section>
       <section>
+        <Authentication></Authentication>
+      </section>
+      {/* <section>
         <Authentication />
-      </section>
-      <section>
-        <Workers></Workers>
-      </section>
+      </section> */}
     </div>
   );
 };

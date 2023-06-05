@@ -1,8 +1,11 @@
+import { Employee, getWorkerById } from "../../classes/Employee.ts";
+const urlJsonEmployee = "http://localhost:4000/workers";
+
 //Управління персоналом - Pattern Команда
 export interface ICommand {
   Execute(): void;
 }
-
+//Invoker
 export class Manager {
   //'Invoker'
   private commands: ICommand[] = [];
@@ -18,63 +21,76 @@ export class Manager {
 
   public ExecuteCommands(): void {
     for (const command of this.commands) {
-      console.log(command);
       command.Execute();
     }
-    console.log(this.commands);
     this.commands = [];
   }
 }
 
-export class Workers {
-  public ListWorkers: Map<string, string> = new Map<string, string>();
-  //Dictionary in c#
-  public AddWorker(workerName: string, position: string): void {
-    console.log(`${workerName} прийнятий на роботу`);
-    this.ListWorkers.set(workerName, position);
-  }
-
-  public Fire(workerName: string): void {
-    console.log(`${workerName} звільнений`);
-    this.ListWorkers.delete(workerName);
-  }
-
-  public CheckList(): void {
-    console.log(
-      "Актуальний список праціників готелю на даний момент:[ПІБ]-[Посада]:"
-    );
-    this.ListWorkers.forEach((position, workerName) => {
-      console.log(`${workerName}-${position}`);
-    });
-  }
-}
-
 export class AddWorkersCommand implements ICommand {
-  private workers: Workers;
-  private workerName: string;
-  private position: string;
+  private worker: Employee;
 
-  constructor(workersSet: Workers, workerName: string, position: string) {
-    this.workers = workersSet;
-    this.workerName = workerName;
-    this.position = position;
+  constructor(worker: Employee) {
+    this.worker = worker;
   }
 
   public Execute(): void {
-    this.workers.AddWorker(this.workerName, this.position);
+    console.log(true);
+    this.worker.addWorker(this.worker);
   }
 }
 
 export class FireWorkersCommand implements ICommand {
-  private workers: Workers;
-  private workerName: string;
+  private worker: Employee;
+  private workerId: number;
 
-  constructor(workersSet: Workers, workerName: string) {
-    this.workers = workersSet;
-    this.workerName = workerName;
+  constructor(workerId: number) {
+    this.workerId = workerId;
   }
+  public async Execute() {
+    console.log("1");
+    let workerObject = await getWorkerById(this.workerId).then((employe) => {
+      return employe;
+    });
+    if (workerObject.length !== 0) {
+      console.log(workerObject[0].name);
+      this.worker = new Employee(
+        workerObject[0].id,
+        workerObject[0].name,
+        workerObject[0].position,
+        workerObject[0].salary,
+        "",
+        false
+      );
+      this.worker.fireWorker(this.worker);
+    }
+  }
+}
+export class SendMessageWorkersCommand implements ICommand {
+  private worker: Employee;
+  private workerId: number;
+  private message: string;
 
-  public Execute(): void {
-    this.workers.Fire(this.workerName);
+  constructor(workerId: number, message: string) {
+    this.workerId = workerId;
+    this.message = message;
+  }
+  public async Execute() {
+    console.log("1");
+    let workerObject = await getWorkerById(this.workerId).then((employe) => {
+      return employe;
+    });
+    if (workerObject.length !== 0) {
+      console.log(workerObject[0].name);
+      this.worker = new Employee(
+        workerObject[0].id,
+        workerObject[0].name,
+        workerObject[0].position,
+        workerObject[0].salary,
+        this.message,
+        false
+      );
+      this.worker.fireWorker(this.worker);
+    }
   }
 }

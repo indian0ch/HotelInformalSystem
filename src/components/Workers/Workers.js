@@ -1,27 +1,48 @@
 import React, { useState } from "react";
 import styles from "./Workers.module.css";
-import {
-  Manager,
-  Workers as workers,
-  AddWorkersCommand,
-  FireWorkersCommand,
-} from "./WorkersCommand.js";
+import { Manager } from "./WorkersCommand.ts";
+import Button from "../UI/Button/Button";
+import WorkersAdd from "./WorkersAdd";
+import WorkersMessage from "./WorkersMessage";
+import WorkersFire from "./WorkersFire";
 
 const Workers = (props) => {
-  //   const manager = new Manager();
-  //   const worker = new workers();
-  //   manager.SetCommand(new AddWorkersCommand(worker, "Andrii", "principle"));
-  //   manager.ExecuteCommands();
-  //   worker.CheckList();
-  //   manager.SetCommand(new AddWorkersCommand(worker, "у", "у"));
-  //   manager.ExecuteCommands();
-  //   worker.CheckList();
-  //   manager.SetCommand(new FireWorkersCommand(worker, "у"));
-  //   manager.ExecuteCommands();
-  //   worker.CheckList();
+  const [whichEmplyeeButtonActive, setWhichEmplyeeButtonActive] =
+    useState("Add");
+  const manager = new Manager();
+
+  function onClickAddHandler() {
+    setWhichEmplyeeButtonActive("Add");
+  }
+  function onClickFireHandler() {
+    setWhichEmplyeeButtonActive("Fire");
+  }
+  function onClickCheckHandler() {
+    setWhichEmplyeeButtonActive("Check");
+  }
+  function onClickLogOutHandler() {
+    props.authServices.logout();
+    props.onLogOut();
+  }
   return (
     <div className={styles.workersContainer}>
-      <p>Workers front-end part</p>
+      <h2>Workers management module</h2>
+      <div className={styles.buttonsContainer}>
+        <Button onClick={onClickAddHandler}>Add Employee</Button>
+        <Button onClick={onClickFireHandler}>Fire Employee</Button>
+        <Button onClick={onClickCheckHandler}>Send a message</Button>
+      </div>
+      {whichEmplyeeButtonActive === "Add" && (
+        <WorkersAdd manager={manager}></WorkersAdd>
+      )}
+      {whichEmplyeeButtonActive === "Fire" && (
+        <WorkersFire manager={manager}></WorkersFire>
+      )}
+      {whichEmplyeeButtonActive === "Check" && (
+        <WorkersMessage manager={manager}></WorkersMessage>
+      )}
+      <br></br>
+      <Button onClick={onClickLogOutHandler}>Log out</Button>
     </div>
   );
 };

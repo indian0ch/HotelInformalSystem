@@ -1,0 +1,84 @@
+.workersAddContainer {
+  background-color: rgb(241, 240, 246);
+  border-radius: 20px;
+}
+
+.workersAddContainer h2,
+p {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+.workersAddContainer label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.workersAddContainer input {
+  font: inherit;
+  display: block;
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 0.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.workersAddContainer input:focus {
+  outline: none;
+  border-color: #4f005f;
+}
+
+.sectionBox {
+  display: block;
+  margin-bottom: 0.5rem;
+  height: 1.9rem;
+}
+
+.workersAddContainer {
+  border-collapse: collapse;
+  font-size: 0.9em;
+  font-family: sans-serif;
+  min-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+  margin: 2rem auto;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.workersAddContainer textarea {
+  width: 100%;
+}
+
+.workersAddContainer thead tr {
+  background-color: #5e81d9;
+  color: #ffffff;
+  text-align: left;
+}
+
+.workersAddContainer th,
+.workersAddContainer td {
+  padding: 12px 15px;
+  text-align: center;
+}
+
+.workersAddContainer tbody tr {
+  border-bottom: 1px solid #dddddd;
+}
+
+.workersAddContainer tbody tr:nth-of-type(even) {
+  background-color: #f3f3f3;
+}
+
+.workersAddContainer tbody tr:last-of-type {
+  border-bottom: 2px solid rgb(131, 94, 243);
+}
+
+.workersAddContainertableBlock {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

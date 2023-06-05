@@ -1,105 +1,51 @@
 //Передбачається функція реєстрації/логіну для персоналу готелю з метою входу у свій особистий кабінет - Pattern Одинак[Singleton]
 //Transfers the registration/login function for hotel staff with land access to their personal account - Pattern [Singleton]
-
-// Worker class
-export class Worker {
-  private username: string;
-  private password: string;
-  private hours: number;
-  private roomToClean: number | null;
-
-  constructor(username: string, password: string) {
-    this.username = username;
-    this.password = password;
-    this.hours = 10;
-    this.roomToClean = null;
-  }
-
-  public setRandomHours(minHours: number, maxHours: number): void {
-    this.hours =
-      Math.floor(Math.random() * (maxHours - minHours + 1)) + minHours;
-  }
-
-  public assignRoomToClean(roomNumber: number): void {
-    this.roomToClean = roomNumber;
-  }
-
-  public cleanRoom(): void {
-    if (this.roomToClean !== null) {
-      console.log(
-        `Worker ${this.username} is cleaning room ${this.roomToClean}.`
-      );
-      // Perform cleaning operations
-      this.roomToClean = null; // Reset assigned room
-    } else {
-      console.log("No room assigned to clean.");
-    }
-  }
-
-  public getHours(): number {
-    return this.hours;
-  }
-
-  public getPassword(): string {
-    return this.password;
-  }
-  public getUsername(): string {
-    return this.username;
-  }
-
-  public getRoomToClean(): number | null {
-    return this.roomToClean;
-  }
-}
+import { Employee, getWorkerById } from "../../classes/Employee.ts";
+const urlJsonEmployee = "http://localhost:4000/workers";
 
 // Authentication service
 export class AuthenticationService {
   private static instance: AuthenticationService;
-  private users: Worker[];
-  private lastLogin: string;
+  private status: boolean;
 
-  private constructor() {
-    this.users = [];
+  constructor() {
+    this.status = false;
   }
 
-  static getInstance(): AuthenticationService {
+  public static getInstance(): AuthenticationService {
     if (!AuthenticationService.instance) {
       AuthenticationService.instance = new AuthenticationService();
     }
     return AuthenticationService.instance;
   }
 
-  register(username: string, password: string): void {
-    const newUser = new Worker(username, password);
-    this.users.push(newUser);
-    console.log(`User "${username}" registered successfully!`);
-  }
-
-  login(username: string, password: string): void {
-    //delete
-    const newUser = new Worker(username, password);
-    this.users.push(newUser);
-    const user = this.users.find(
-      (person) =>
-        person.getUsername() === username && person.getPassword() === password
-    );
-    if (user) {
-      console.log(`User "${username}" logged in successfully!`);
-      this.lastLogin = username;
+  public async login(workerId: number, name: string) {
+    console.log("hello");
+    let workerObject = await getWorkerById(workerId).then((employee) => {
+      return employee;
+    });
+    console.log(workerObject);
+    if (workerObject.length !== 0) {
+      if (
+        workerObject[0].status === true &&
+        workerObject[0].position === "manager"
+      ) {
+        alert(`Manager "${name}" logged in successfully!`);
+        this.status = true;
+      } else {
+        alert(`Manager with such username do not found!`);
+      }
     } else {
-      console.log(`Invalid credentials. Please try again!`);
+      alert(`Manager with such username do not found!`);
     }
   }
-  public getLastLogin() {
-    return this.lastLogin;
+
+  public getStatus() {
+    return this.status;
   }
 
-  public getUsers() {
-    return this.users;
-  }
-
-  logout(username: string): void {
-    console.log(`User "${username}" logged out successfully!`);
-    this.lastLogin = null;
+  logout(): void {
+    alert(`Manager logged out successfully!`);
+    this.status = false;
   }
 }

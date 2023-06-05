@@ -89,7 +89,7 @@ label {
 .loginHeader {
     font: inherit;
     padding: 0.5rem;
-    color: white;
+    color: rgb(0, 0, 0);
     cursor: pointer;
     width: 50%;
     display: block;
@@ -99,9 +99,8 @@ label {
     font-weight: 600;
     text-align: center;
     margin-bottom: 10px;
-    background-color: rgb(125, 146, 246);
     padding: 1rem 0rem;
-    font-size: 18px;
+    font-size: 23px;
 }
 .loginHeader:hover{
     background-color: rgb(3, 18, 94);

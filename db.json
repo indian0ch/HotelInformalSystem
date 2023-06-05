@@ -206,14 +206,20 @@
   ],
   "workers": [
     {
-      "id": 1,
-      "postId": 1,
-      "text": "Comment 1"
+      "id": 2,
+      "name": "Andrii Fesiuk",
+      "position": "principle",
+      "salary": 300,
+      "messageAdmin": "",
+      "status": true
     },
     {
-      "id": 2,
-      "postId": 2,
-      "text": "Comment 2"
+      "id": "32323",
+      "name": "Maks",
+      "position": "manager",
+      "salary": "100",
+      "messageAdmin": "nike sb top",
+      "status": true
     }
   ]
 }
