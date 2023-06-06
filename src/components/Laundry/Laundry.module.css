@@ -24,7 +24,8 @@ p {
     margin-bottom: 0.5rem;
 }
 
-.laundryContainer input {
+.laundryContainer input,
+select {
     font: inherit;
     display: block;
     width: 100%;

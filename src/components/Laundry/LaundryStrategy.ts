@@ -42,12 +42,15 @@ export class SyntheticsLaundryStrategy implements LaundryStrategy {
       case "Rayon":
         this.temperature = 30;
         this.washingTime = 30;
+        break;
       case "Acrilic":
         this.temperature = 60;
         this.washingTime = 30;
+        break;
       case "Polyester":
         this.temperature = 80;
         this.washingTime = 30;
+        break;
     }
   }
   public wash(): void {
@@ -70,12 +73,13 @@ export class CottonLaundryStrategy implements LaundryStrategy {
   private condition: string;
 
   constructor(
-    percentageCotton: number,
     weightClothes: number,
+    percentageCotton: number,
     temperature: number
   ) {
     this.percentageCotton = percentageCotton;
     this.weightClothes = weightClothes;
+    this.temperature = temperature;
   }
 
   private checkCondition(): void {

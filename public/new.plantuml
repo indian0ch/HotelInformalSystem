@@ -1,14 +1,56 @@
-class Employee {
-  + getStatus(): boolean
-  + getName(): string
-  + getEmployeeId(): number
-  + getPosition(): string
-  + getSalary(): number
-  + getMessage(): string
-  + addWorker(newEmployee: Employee): void
-  + fireWorker(fireEmployee: Employee): void
-  + sendMessageWorker(fireEmployee: Employee): void
+class LaundryContext {
+  -laundryStrategy: LaundryStrategy
+
+  +LaundryContext(strategy: LaundryStrategy)
+  +setStrategy(strategy: LaundryStrategy): void
+  +executeLaundry(): void
 }
+
+interface LaundryStrategy {
+  +wash(): void
+}
+
+class StandardLaundryStrategy {
+  +wash(): void
+}
+
+class SyntheticsLaundryStrategy {
+  -temperature: number
+  -weightClothes: number
+  -typeSynthetics: string
+  -washingTime: number
+
+  +SyntheticsLaundryStrategy
+  (weightClothes: number, typeSynthetics: string)
+  -checkTime(): void
+  +wash(): void
+}
+
+class CottonLaundryStrategy {
+  -temperature: number
+  -weightClothes: number
+  -percentageCotton: number
+  -washingTime: number
+  -condition: string
+
+  +CottonLaundryStrategy(percentageCotton: 
+  number, 
+  weightClothes: number, temperature: number)
+  -checkCondition(): void
+  +wash(): void
+}
+class Client{
+
+}
+
+Client ..> SyntheticsLaundryStrategy
+Client ..> CottonLaundryStrategy
+Client ..> StandardLaundryStrategy
+LaundryContext <|--> LaundryStrategy
+SyntheticsLaundryStrategy ..|> LaundryStrategy
+CottonLaundryStrategy ..|> LaundryStrategy
+StandardLaundryStrategy ..|> LaundryStrategy
+Client --> LaundryContext
 
 
 
