@@ -1,69 +1,14 @@
-@startuml
-
-interface ICommand {
-  + Execute(): void
-}
-
-class Manager {
-  - commands: ICommand[]
-  - name: string
-
-  + Manager(name: string = "Andriy")
-  + SetCommand(com: ICommand): void
-  + ExecuteCommands(): void
-}
-
-class AddWorkersCommand {
-  - worker: Employee
-
-  + AddWorkersCommand(worker: Employee)
-  + Execute(): void
-}
-
-class FireWorkersCommand {
-  - worker: Employee
-  - workerId: number
-
-  + FireWorkersCommand(workerId: number)
-  + Execute(): void
-}
-
-class SendMessageWorkersCommand {
-  - worker: Employee
-  - workerId: number
-  - message: string
-
-  + SendMessageWorkersCommand(workerId: number, message: string)
-  + Execute(): void
-}
-
 class Employee {
-  + id: number
-  + name: string
-  + position: string
-  + salary: number
-  + message: string
-  + active: boolean
-
-  + addWorker(worker: Employee): void
-  + fireWorker(worker: Employee): void
+  + getStatus(): boolean
+  + getName(): string
+  + getEmployeeId(): number
+  + getPosition(): string
+  + getSalary(): number
+  + getMessage(): string
+  + addWorker(newEmployee: Employee): void
+  + fireWorker(fireEmployee: Employee): void
+  + sendMessageWorker(fireEmployee: Employee): void
 }
-class Client{
-
-}
-
-AddWorkersCommand <..Client
-FireWorkersCommand <..Client
-SendMessageWorkersCommand <..Client
-Manager <--Client
-Employee <--Client
-ICommand <|.. AddWorkersCommand
-ICommand <|.. FireWorkersCommand
-ICommand <|.. SendMessageWorkersCommand
-
-Manager --> ICommand
-
-@enduml
 
 
 

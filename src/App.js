@@ -6,6 +6,7 @@ import Authentication from "./components/Authentication/Authentication";
 import Button from "./components/UI/Button/Button";
 import styled from "./App.module.css";
 import { BrowserRouter, Routes, Switch, Route, Link } from "react-router-dom";
+import Laundry from "./components/Laundry/Laundry";
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
         <Link to="/payments">Payments module</Link>
         <Link to="/review">Review module</Link>
         <Link to="/authentication">Authentication module</Link>
+        <Link to="/laundry">Laundry module</Link>
         </div>
         
         <Routes>
@@ -23,6 +25,7 @@ const App = () => {
           <Route path="/payments" element={<Payments />} />
           <Route path="/review" element={<Review />} />
           <Route path="/authentication" element={<Authentication />} />
+          <Route path="/laundry" element={<Laundry />} />
         </Routes>
       </div>
     </BrowserRouter>
