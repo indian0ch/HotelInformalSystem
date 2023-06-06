@@ -1,6 +1,6 @@
 //Передбачається функція,яка визначає сімейство схожих алгоритмів оплати і розміщує кожен з них у власному класі)  - Pattern Стратегія[Strategy]
 
-export class Laundry {
+export class LaundryContext {
   private laundryStrategy: LaundryStrategy;
 
   constructor(strategy: LaundryStrategy) {

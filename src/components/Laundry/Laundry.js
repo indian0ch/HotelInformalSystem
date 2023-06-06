@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styles from "./Laundry.module.css";
 import Button from "../UI/Button/Button";
 import {
-  Laundry,
+    LaundryContext,
   StandardLaundryStrategy,
   SyntheticsLaundryStrategy,
   CottonLaundryStrategy,
@@ -11,7 +11,7 @@ import {
 const Laundry = (props) => {
   const [washingType, setWashingType] = useState("Standard");
   const [washingWeight, setWashingWeight] = useState('');
-  const laundry=new Laundry();
+  const laundry=new LaundryContext();
   //const [washingWeight, setWashingWeight] = useState('');
 
   //   function onClickAddHandler() {
