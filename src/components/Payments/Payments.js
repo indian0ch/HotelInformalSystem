@@ -1,10 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Payments.module.css";
-import {
-  CashPaymentStrategy,
-  CreditCardPaymentStrategy,
-  PayPalPaymentStrategy,
-} from "./PaymentsStrategy.ts";
+import { PaymentFactory } from "./PaymentsFactoryMethod.ts";
 import Button from "../UI/Button/Button";
 import { getGuests, modifyGuest } from "../../classes/Guest.ts";
 
@@ -58,23 +54,15 @@ const Payments = (props) => {
   }
   async function onClickPayHandler(event) {
     event.preventDefault();
-    let strategy = undefined;
-    switch (selectedMethod) {
-      case "Cash":
-        strategy = new CashPaymentStrategy();
-        break;
-      case "PayPal":
-        strategy = new PayPalPaymentStrategy(payPalName, payPalPass);
-        break;
-      case "MonoPay":
-        strategy = new CreditCardPaymentStrategy(
-          cardNumber,
-          cardExpiration,
-          cardCvv
-        );
-        break;
-    }
-    strategy.pay(userSum);
+    let paymentFactory = new PaymentFactory();
+    let payments = paymentFactory.createPayment(selectedMethod, {
+      cardNumber: cardNumber,
+      cardExpiration: cardExpiration,
+      cardCvv: cardCvv,
+      payPalName: payPalName,
+      payPalPass: payPalPass,
+    });
+    payments.pay(userSum);
     if (userSum - userDoubt >= 0) {
       await modifyGuest(userId, 0);
     } else {

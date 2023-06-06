@@ -1,16 +1,37 @@
 //Передбачається функція,яка визначає сімейство схожих алгоритмів оплати і розміщує кожен з них у власному класі)  - Pattern Стратегія[Strategy]
 
-interface PaymentStrategy {
+export class PaymentFactory {
+  createPayment(paymentType: string, paymentDetails: any): PaymentWays {
+    switch (paymentType) {
+      case "Cash":
+        return new CashPaymentStrategy();
+      case "MonoPay":
+        const { cardNumber, cardExpiration, cardCvv } = paymentDetails;
+        return new CreditCardPaymentStrategy(
+          cardNumber,
+          cardExpiration,
+          cardCvv
+        );
+      case "PayPal":
+        const { payPalName, payPalPass } = paymentDetails;
+        return new PayPalPaymentStrategy(payPalName, payPalPass);
+      default:
+        throw new Error(`Invalid payment type: ${paymentType}`);
+    }
+  }
+}
+
+interface PaymentWays {
   pay(amount: number): void;
 }
 
-export class CashPaymentStrategy implements PaymentStrategy {
+export class CashPaymentStrategy implements PaymentWays {
   pay(amount: number): void {
     alert(`Payment of ${amount} by cash.`);
   }
 }
 
-export class CreditCardPaymentStrategy implements PaymentStrategy {
+export class CreditCardPaymentStrategy implements PaymentWays {
   private cardNumber: string;
   private cardExpiration: string;
   private cardCVV: string;
@@ -26,7 +47,7 @@ export class CreditCardPaymentStrategy implements PaymentStrategy {
   }
 }
 
-export class PayPalPaymentStrategy implements PaymentStrategy {
+export class PayPalPaymentStrategy implements PaymentWays {
   private paypalUsername: string;
   private paypalPassword: string;
 

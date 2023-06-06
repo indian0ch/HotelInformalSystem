@@ -17,18 +17,7 @@ const App = () => {
         <Link to="/review">Review module</Link>
         <Link to="/authentication">Authentication module</Link>
         </div>
-        {/* <section className={styled.goalform}>
-          <Reservation></Reservation>
-        </section>
-        <section>
-          <Payments></Payments>
-        </section>
-        <section className={styled.goalform}>
-          <Review></Review>
-        </section>
-        <section>
-          <Authentication></Authentication>
-        </section> */}
+        
         <Routes>
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/payments" element={<Payments />} />

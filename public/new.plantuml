@@ -1,40 +1,71 @@
 @startuml
 
-interface PaymentStrategy {
-  + pay(amount: number): void
+interface ICommand {
+  + Execute(): void
 }
 
-class CashPaymentStrategy {
-  + pay(amount: number): void
+class Manager {
+  - commands: ICommand[]
+  - name: string
+
+  + Manager(name: string = "Andriy")
+  + SetCommand(com: ICommand): void
+  + ExecuteCommands(): void
 }
 
-class CreditCardPaymentStrategy {
-  - cardNumber: string
-  - cardExpiration: string
-  - cardCVV: string
-  + constructor(cardNumber: string, cardExpiration: string, cardCVV: string)
-  + pay(amount: number): void
+class AddWorkersCommand {
+  - worker: Employee
+
+  + AddWorkersCommand(worker: Employee)
+  + Execute(): void
 }
 
-class PayPalPaymentStrategy {
-  - paypalUsername: string
-  - paypalPassword: string
-  + constructor(paypalUsername: string, paypalPassword: string)
-  + pay(amount: number): void
+class FireWorkersCommand {
+  - worker: Employee
+  - workerId: number
+
+  + FireWorkersCommand(workerId: number)
+  + Execute(): void
+}
+
+class SendMessageWorkersCommand {
+  - worker: Employee
+  - workerId: number
+  - message: string
+
+  + SendMessageWorkersCommand(workerId: number, message: string)
+  + Execute(): void
+}
+
+class Employee {
+  + id: number
+  + name: string
+  + position: string
+  + salary: number
+  + message: string
+  + active: boolean
+
+  + addWorker(worker: Employee): void
+  + fireWorker(worker: Employee): void
 }
 class Client{
 
 }
 
-PaymentStrategy <-- Client
-CashPaymentStrategy <.. Client
-CreditCardPaymentStrategy <.. Client
-PayPalPaymentStrategy <.. Client
-PaymentStrategy <|.. CashPaymentStrategy
-PaymentStrategy <|.. CreditCardPaymentStrategy
-PaymentStrategy <|.. PayPalPaymentStrategy
+AddWorkersCommand <..Client
+FireWorkersCommand <..Client
+SendMessageWorkersCommand <..Client
+Manager <--Client
+Employee <--Client
+ICommand <|.. AddWorkersCommand
+ICommand <|.. FireWorkersCommand
+ICommand <|.. SendMessageWorkersCommand
+
+Manager --> ICommand
 
 @enduml
+
+
 
 
 
