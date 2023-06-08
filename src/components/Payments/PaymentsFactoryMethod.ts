@@ -4,17 +4,17 @@ export class PaymentFactory {
   createPayment(paymentType: string, paymentDetails: any): PaymentWays {
     switch (paymentType) {
       case "Cash":
-        return new CashPaymentStrategy();
+        return new CashPayment();
       case "MonoPay":
         const { cardNumber, cardExpiration, cardCvv } = paymentDetails;
-        return new CreditCardPaymentStrategy(
+        return new CreditCardPayment(
           cardNumber,
           cardExpiration,
           cardCvv
         );
       case "PayPal":
         const { payPalName, payPalPass } = paymentDetails;
-        return new PayPalPaymentStrategy(payPalName, payPalPass);
+        return new PayPalPayment(payPalName, payPalPass);
       default:
         throw new Error(`Invalid payment type: ${paymentType}`);
     }
@@ -25,13 +25,13 @@ interface PaymentWays {
   pay(amount: number): void;
 }
 
-export class CashPaymentStrategy implements PaymentWays {
+export class CashPayment implements PaymentWays {
   pay(amount: number): void {
     alert(`Payment of ${amount} by cash.`);
   }
 }
 
-export class CreditCardPaymentStrategy implements PaymentWays {
+export class CreditCardPayment implements PaymentWays {
   private cardNumber: string;
   private cardExpiration: string;
   private cardCVV: string;
@@ -47,7 +47,7 @@ export class CreditCardPaymentStrategy implements PaymentWays {
   }
 }
 
-export class PayPalPaymentStrategy implements PaymentWays {
+export class PayPalPayment implements PaymentWays {
   private paypalUsername: string;
   private paypalPassword: string;
 
