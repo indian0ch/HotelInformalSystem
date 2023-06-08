@@ -1,6 +1,6 @@
 const urlJsonRoom = "http://localhost:4000/rooms";
 export class Room {
-  private id: string;
+  public id: string;
   private roomNumber: number;
   private checkInDate: Date | null;
   private checkOutDate: Date | null;
@@ -74,7 +74,8 @@ export function getRooms() {
     });
 }
 export function modifyRoom(modifiedRoom: Room) {
-  fetch(`${urlJsonRoom}/${modifiedRoom.getId()}`, {
+  console.log(modifiedRoom);
+  fetch(`${urlJsonRoom}/${modifiedRoom.id}`, {
     method: "PATCH",
     headers: {
       "Content-Type": "application/json",

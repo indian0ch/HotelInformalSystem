@@ -66,11 +66,12 @@
     {
       "id": 7,
       "roomNumber": 108,
-      "checkInDate": null,
-      "checkOutDate": null,
-      "guestId": null,
+      "checkInDate": "2023-06-03",
+      "checkOutDate": "2023-06-17",
+      "guestId": "56454",
       "isCleaned": false,
-      "pricePerNight": 100
+      "pricePerNight": 100,
+      "priceService": 1627
     },
     {
       "id": 8,
@@ -220,6 +221,43 @@
       "salary": "100",
       "messageAdmin": "nike sb top",
       "status": true
+    }
+  ],
+  "reviews": [
+    {
+      "id": "32323",
+      "nameres": "Andrii Fesiuk",
+      "satisfactionLevel": "4",
+      "textReview": "Good",
+      "administrationName": "Andrii Fesiuk"
+    },
+    {
+      "id": "232323",
+      "nameres": "Andrii Fesiuk",
+      "satisfactionLevel": "4",
+      "textReview": "Good",
+      "administrationName": "Andrii Fesiuk"
+    },
+    {
+      "id": "8778",
+      "nameres": "Nkke",
+      "satisfactionLevel": "3",
+      "textReview": "Bad",
+      "administrationName": "Andrii Fesiuk"
+    },
+    {
+      "id": 5718,
+      "nameres": "Nkke",
+      "satisfactionLevel": "3",
+      "textReview": "Bad",
+      "administrationName": "Andrii Fesiuk"
+    },
+    {
+      "id": 5921,
+      "nameres": "Stepe",
+      "satisfactionLevel": "3",
+      "textReview": "Bad so bad",
+      "administrationName": "Andrii Fesiuk"
     }
   ]
 }

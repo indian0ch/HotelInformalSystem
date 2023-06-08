@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Review.module.css";
-import { HotelAdministration, Residents } from "./ReviewObserver.ts";
+import { HotelAdministration, ResidentReviews } from "./ReviewObserver.ts";
 import Button from "../UI/Button/Button";
 
 const Review = (props) => {
@@ -23,9 +23,9 @@ const Review = (props) => {
   function onSubmitFormHandler(event) {
     event.preventDefault();
     const administator = new HotelAdministration(reviewerName);
-    const resident = new Residents(residentName, reviewText);
-    resident.Attach(administator);
-    resident.SatisfactionLevelSet = reviewerLevel;
+    const review = new ResidentReviews(residentName, reviewText);
+    review.attach(administator);
+    review.SatisfactionLevelSet = reviewerLevel;
   }
 
   return (
@@ -57,8 +57,8 @@ const Review = (props) => {
             className={styles.reviewSelect}
           >
             <option value="Andrii Fesiuk">Andrii Fesiuk, Principle</option>
-            <option value="Stepan Bander">
-              Stepan Bander, Host-Administartor
+            <option value="Maks">
+              Maks Bondarenko, Host-Administartor
             </option>
           </select>
         </div>
