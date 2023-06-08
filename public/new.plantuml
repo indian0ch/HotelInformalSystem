@@ -1,42 +1,47 @@
 @startuml
 
-class PaymentFactory {
-  + createPayment(paymentType: string, paymentDetails: any): PaymentWays
+interface ICommand {
+  + Execute(): void
 }
 
-interface PaymentWays {
-  + pay(amount: number): void
+class Manager {
+  - commands: ICommand[]
+  - name: string
+  + Manager(name: string = "Andriy")
+  + SetCommand(com: ICommand): void
+  + ExecuteCommands(): void
 }
 
-class CashPayment {
-  + pay(amount: number): void
+class AddWorkersCommand {
+  - worker: Employee
+  + AddWorkersCommand(worker: Employee)
+  + Execute(): void
 }
 
-class CreditCardPayment {
-  - cardNumber: string
-  - cardExpiration: string
-  - cardCVV: string
-  + CreditCardPayment(cardNumber: string, cardExpiration: string, cardCVV: string)
-  + pay(amount: number): void
+class FireWorkersCommand {
+  - worker: Employee
+  - workerId: number
+  + FireWorkersCommand(workerId: number)
+  + Execute(): void
 }
 
-class PayPalPayment {
-  - paypalUsername: string
-  - paypalPassword: string
-  + PayPalPayment(paypalUsername: string, paypalPassword: string)
-  + pay(amount: number): void
+class SendMessageWorkersCommand {
+  - worker: Employee
+  - workerId: number
+  - message: string
+  + SendMessageWorkersCommand(workerId: number, message: string)
+  + Execute(): void
 }
 
-PaymentFactory --> PaymentWays
-PaymentFactory --> CashPayment
-PaymentFactory --> CreditCardPayment
-PaymentFactory --> PayPalPayment
+ ICommand <|.. AddWorkersCommand
+ ICommand <|.. FireWorkersCommand
+ ICommand <|.. SendMessageWorkersCommand
 
-PaymentWays <|.. CashPayment
-PaymentWays <|.. CreditCardPayment
-PaymentWays <|.. PayPalPayment
+Manager --> ICommand
 
 @enduml
+
+
 
 
 

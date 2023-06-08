@@ -1,0 +1,32 @@
+.homeContainer {
+    background-color: rgb(241, 240, 246);
+    border-radius: 20px;
+}
+
+.homeContainer {
+    margin: 2rem auto;
+    padding: 1rem;
+    width: 90%;
+    max-width: 40rem;
+}
+
+.homeContainer h2 {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+.homeContainer p {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.textContainer article{
+    text-align: justify;
+}
+
+.homeContainer input:focus {
+    outline: none;
+    border-color: #4f005f;
+}

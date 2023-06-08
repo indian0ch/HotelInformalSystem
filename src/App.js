@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+import React from "react";
 import Reservation from "./components/Reservation/Reservation";
 import Review from "./components/Review/Review";
 import Payments from "./components/Payments/Payments";
 import Authentication from "./components/Authentication/Authentication";
-import Button from "./components/UI/Button/Button";
 import styled from "./App.module.css";
-import { BrowserRouter, Routes, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
 import Laundry from "./components/Laundry/Laundry";
+import Home from "./components/Home/Home";
 
 const App = () => {
   return (
     <BrowserRouter>
       <div className={styled.blockPage}>
         <div className={styled.linksColumn}>
-        <Link to="/reservation">Reservation module</Link>
-        <Link to="/payments">Payments module</Link>
-        <Link to="/review">Review module</Link>
-        <Link to="/authentication">Authentication module</Link>
-        <Link to="/laundry">Laundry module</Link>
+          <Link to="/">Home </Link>
+          <Link to="/reservation">Reservation module</Link>
+          <Link to="/payments">Payments module</Link>
+          <Link to="/review">Review module</Link>
+          <Link to="/authentication">Authentication module</Link>
+          <Link to="/laundry">Laundry module</Link>
         </div>
-        
+
         <Routes>
+          <Route path="/" element={<Home />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/review" element={<Review />} />
