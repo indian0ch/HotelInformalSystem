@@ -1,56 +1,45 @@
-class LaundryContext {
-  -laundryStrategy: LaundryStrategy
+@startuml
 
-  +LaundryContext(strategy: LaundryStrategy)
-  +setStrategy(strategy: LaundryStrategy): void
-  +executeLaundry(): void
+interface Services {
+  + login(workerId: number, name: string): void
+  + logout(): void
 }
 
-interface LaundryStrategy {
-  +wash(): void
+class ProxyService {
+  - authService: AuthenticationService
+  - status: boolean
+
+  + ProxyService(authService: AuthenticationService)
+  + login(workerId: number, name: string): void
+  + getStatus()
+  + logout(): void
+  - checkAccess(): void
 }
 
-class StandardLaundryStrategy {
-  +wash(): void
-}
+class AuthenticationService {
+  - status: boolean
 
-class SyntheticsLaundryStrategy {
-  -temperature: number
-  -weightClothes: number
-  -typeSynthetics: string
-  -washingTime: number
-
-  +SyntheticsLaundryStrategy
-  (weightClothes: number, typeSynthetics: string)
-  -checkTime(): void
-  +wash(): void
-}
-
-class CottonLaundryStrategy {
-  -temperature: number
-  -weightClothes: number
-  -percentageCotton: number
-  -washingTime: number
-  -condition: string
-
-  +CottonLaundryStrategy(percentageCotton: 
-  number, 
-  weightClothes: number, temperature: number)
-  -checkCondition(): void
-  +wash(): void
+  + AuthenticationService()
+  + login(workerId: number, name: string): void
+  + getStatus()
+  + logout(): void
 }
 class Client{
 
 }
 
-Client ..> SyntheticsLaundryStrategy
-Client ..> CottonLaundryStrategy
-Client ..> StandardLaundryStrategy
-LaundryContext <|--> LaundryStrategy
-SyntheticsLaundryStrategy ..|> LaundryStrategy
-CottonLaundryStrategy ..|> LaundryStrategy
-StandardLaundryStrategy ..|> LaundryStrategy
-Client --> LaundryContext
+Services <|.. ProxyService
+Services <|.. AuthenticationService
+
+ProxyService --> AuthenticationService
+Client --> Services
+
+@enduml
+
+
+
+
+
 
 
 

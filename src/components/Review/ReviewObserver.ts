@@ -65,9 +65,9 @@ export class HotelAdministration implements IObserver {
     if (subject instanceof Residents) {
       const concreteSubject: Residents = subject;
       if (concreteSubject.SatisfactionLevelGet >= 4) {
-        console.log(`Адміністратор ${this.administrationName} отримав оцінку від користувача ${concreteSubject.nameResident} стосовно якості обслуговування готелю. Оцінка: ${concreteSubject.SatisfactionLevelGet}. Адміністратор ${this.administrationName} задоволений результатом роботи готелю і вдячний ${concreteSubject.nameResident} за хорошу оцінку!`);
+        alert(`Адміністратор ${this.administrationName} отримав оцінку від користувача ${concreteSubject.nameResident} стосовно якості обслуговування готелю. Оцінка: ${concreteSubject.SatisfactionLevelGet}. Адміністратор ${this.administrationName} задоволений результатом роботи готелю і вдячний ${concreteSubject.nameResident} за хорошу оцінку!`);
       } else {
-        console.log(`Адміністратор ${this.administrationName} отримав оцінку від користувача ${concreteSubject.nameResident} стосовно якості обслуговування готелю. Оцінка: ${concreteSubject.SatisfactionLevelGet}. Адміністратор ${this.administrationName} просить ${concreteSubject.nameResident} прийняти вибачення і пообіцяв виправити ситуацію!`);
+        alert(`Адміністратор ${this.administrationName} отримав оцінку від користувача ${concreteSubject.nameResident} стосовно якості обслуговування готелю. Оцінка: ${concreteSubject.SatisfactionLevelGet}. Адміністратор ${this.administrationName} просить ${concreteSubject.nameResident} прийняти вибачення і пообіцяв виправити ситуацію!`);
       }
     }
   }

@@ -11,7 +11,7 @@ function Login(props) {
     await props.authServices.login(+employeeId, employeeName);
     setEmployeeId("");
     setEmployeeName("");
-    await props.onContinue();
+    props.onContinue()
   }
   function onEmailHandler(event) {
     setEmployeeId(event.target.value);
