@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Reservation.module.css";
-import { ReservationRoom } from "./ReservationFacade.ts";
+import { ReservationRoom, ReservationRoomFacade } from "./ReservationFacade.ts";
 import Button from "../UI/Button/Button.js";
 import Service from "../Service/Service";
 
@@ -75,7 +75,7 @@ const Reservation = (props) => {
         ((new Date(outDate) - new Date(arraivedDate)) / (1000 * 60 * 60 * 24)) *
           priceRoom +
         priceService;
-      let res = new ReservationRoom(
+      let resroom = new ReservationRoom(
         nameUser,
         phoneNumberUser,
         idUser,
@@ -85,6 +85,7 @@ const Reservation = (props) => {
         priceRoom,
         totalCount
       );
+      let res = new ReservationRoomFacade(resroom);
       res.doReservation();
       cleanInputs();
     } else {

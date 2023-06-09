@@ -2,13 +2,37 @@ import { Room, getRooms, modifyRoom } from "../../classes/Room.ts";
 import { Guest } from "../../classes/Guest.ts";
 
 ///Facade
+export class ReservationRoomFacade {
+  protected reservationRoom: ReservationRoom;
+
+  constructor(reservationRoom: ReservationRoom) {
+    this.reservationRoom = reservationRoom;
+  }
+
+  public async doReservation() {
+    console.log(this.reservationRoom.guest);
+    let available = await this.reservationRoom.checkAvailability();
+
+    if (typeof available !== "string") {
+      available.checkInDate = this.reservationRoom.checkInDate;
+      available.checkOutDate = this.reservationRoom.checkOutDate;
+      available.guestId = this.reservationRoom.guest.id;
+      //available.priceService = this.reservationRoom.servicePrice;
+      this.reservationRoom.guest.postGuest(this.reservationRoom.guest);
+      modifyRoom(available);
+    } else {
+      window.alert("No one room with such parameter available!");
+    }
+  }
+}
+
 export class ReservationRoom {
-  protected guest: Guest;
-  protected room: Room;
-  protected typeRoom: number;
-  private checkInDate: string;
-  private checkOutDate: string;
-  private servicePrice: number;
+  public guest: Guest;
+  public room: Room;
+  public typeRoom: number;
+  public checkInDate: string;
+  public checkOutDate: string;
+  public servicePrice: number;
 
   constructor(
     full_name: string = "Fesiuk_Andrey",
@@ -27,21 +51,6 @@ export class ReservationRoom {
     this.servicePrice = servicePrice;
   }
 
-  public async doReservation() {
-    console.log(this.guest);
-    let available = await this.checkAvailability();
-
-    if (typeof available !== "string") {
-      available.checkInDate = this.checkInDate;
-      available.checkOutDate = this.checkOutDate;
-      available.guestId = this.guest.id;
-      available.priceService = this.servicePrice;
-      this.guest.postGuest(this.guest);
-      modifyRoom(available);
-    } else {
-      window.alert("No one room with such parametr available!");
-    }
-  }
   public async checkAvailability() {
     let roomArray = await getRooms().then((roomArr) => {
       return roomArr;

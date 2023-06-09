@@ -1,45 +1,74 @@
 @startuml
+class ReservationRoomFacade {
+  - reservationRoom: ReservationRoom
 
-interface ICommand {
-  + Execute(): void
+  + ReservationRoomFacade(reservationRoom: ReservationRoom)
+  + doReservation(): void
 }
 
-class Manager {
-  - commands: ICommand[]
+class ReservationRoom {
+  - guest: Guest
+  - room: Room
+  - typeRoom: number
+  - checkInDate: string
+  - checkOutDate: string
+  - servicePrice: number
+
+  + ReservationRoom(full_name: string = "Fesiuk_Andrey", 
+  phoneNumbe: string = "030302032", id: number = 32335552, 
+  email: string = "den@gmail.com", checkInDate: string = "2023-06-01", 
+  checkOutDate: string = "2023-06-03", typeRoom: number = 100, servicePrice: number = 20)
+  + checkAvailability(): Promise<any>
+}
+
+class Guest {
+  - id: number
   - name: string
-  + Manager(name: string = "Andriy")
-  + SetCommand(com: ICommand): void
-  + ExecuteCommands(): void
+  - email: string
+  - phoneNumber: string
+  - priceService: number
+
+  + Guest(id: number, name: string, email: string, 
+  phoneNumber: string, priceService: number)
+  + getId(): number
+  + getName(): string
+  + getEmail(): string
+  + getPhoneNumber(): string
+  + updateEmail(newEmail: string): void
+  + updatePhoneNumber(newPhoneNumber: string): void
+  + postGuest(newGuest: Guest): void
 }
 
-class AddWorkersCommand {
-  - worker: Employee
-  + AddWorkersCommand(worker: Employee)
-  + Execute(): void
+class Room {
+  + id: string
+  - roomNumber: number
+  - checkInDate: Date | null
+  - checkOutDate: Date | null
+  - guestId: string | null
+  - isCleaned: boolean
+  - pricePerNight: number
+
+  + Room(id: string, roomNumber: number, 
+  pricePerNight: number)
+  + getId(): string
+  + getRoomNumber(): number
+  + getCheckInDate(): Date | null
+  + getCheckOutDate(): Date | null
+  + getGuestId(): string | null
+  + isClean(): boolean
+  + getPricePerNight(): number
+  + checkIn(guestId: string, checkInDate: Date): void
+  + checkOut(): void
+  + cleanRoom(): void
 }
 
-class FireWorkersCommand {
-  - worker: Employee
-  - workerId: number
-  + FireWorkersCommand(workerId: number)
-  + Execute(): void
-}
-
-class SendMessageWorkersCommand {
-  - worker: Employee
-  - workerId: number
-  - message: string
-  + SendMessageWorkersCommand(workerId: number, message: string)
-  + Execute(): void
-}
-
- ICommand <|.. AddWorkersCommand
- ICommand <|.. FireWorkersCommand
- ICommand <|.. SendMessageWorkersCommand
-
-Manager --> ICommand
+Application --> ReservationRoomFacade
+ReservationRoomFacade ..>Room
+ReservationRoomFacade ..>Guest
+ReservationRoomFacade ..>ReservationRoom
 
 @enduml
+
 
 
 

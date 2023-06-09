@@ -21,9 +21,9 @@
     {
       "id": 2,
       "roomNumber": 103,
-      "checkInDate": null,
-      "checkOutDate": null,
-      "guestId": null,
+      "checkInDate": "2023-06-01",
+      "checkOutDate": "2023-06-30",
+      "guestId": "6578",
       "isCleaned": false,
       "pricePerNight": 200
     },
@@ -57,21 +57,20 @@
     {
       "id": 6,
       "roomNumber": 107,
-      "checkInDate": "2023-06-11",
-      "checkOutDate": "2023-06-18",
-      "guestId": "32323",
+      "checkInDate": "2023-06-01",
+      "checkOutDate": "2023-06-03",
+      "guestId": 32335552,
       "isCleaned": false,
       "pricePerNight": 100
     },
     {
       "id": 7,
       "roomNumber": 108,
-      "checkInDate": "2023-06-03",
-      "checkOutDate": "2023-06-17",
-      "guestId": "56454",
+      "checkInDate": null,
+      "checkOutDate": null,
+      "guestId": null,
       "isCleaned": false,
-      "pricePerNight": 100,
-      "priceService": 1627
+      "pricePerNight": 100
     },
     {
       "id": 8,
@@ -203,6 +202,12 @@
       "email": "mask@gmail.com",
       "phoneNumber": "0685087867",
       "priceService": 662
+    },
+    {
+      "id": "6578",
+      "name": "Andreww",
+      "email": "maswk@gmail.com",
+      "phoneNumber": "43555656"
     }
   ],
   "workers": [
