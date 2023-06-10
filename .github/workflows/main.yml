@@ -18,8 +18,8 @@ jobs:
         run: npm ci
 
       - name: Build the app
-        env: 
-          VITE_SECRET_KEY: ${{ secrets.VITE_SECRET_KEY }}
+        env:
+          CI: false
         run: npm run build
         
       - name: Deploy 🚀
