@@ -1,35 +1,29 @@
-# This workflow will do a clean intallation of noddependencies, cache/ estore them, build the source code and run tests across different versions of node
+# This is a basic workflow to help you get started with Actions
 
-name: Deploy to GitHub Pages
+name: Build and Release
 
+# Controls when the workflow will run
 on:
   push:
-    branches:
-      - master
+    branches: [ "master" ]
+  workflow_dispatch:
 
 jobs:
-  deploy:
+  build:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Set up Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: 14
+      - uses: actions/checkout@v3
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Build
+      - name: Build the app
+        env: 
+          VITE_SECRET_KEY: ${{ secrets.VITE_SECRET_KEY }}
         run: npm run build
-
-      - name: Deploy with gh-pages
-        run: |
-          git remote set-url origin https://git:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
-          npx gh-pages -d build -u "github-actions-bot <support+actions@github.com>"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: dist
 
