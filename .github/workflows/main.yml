@@ -19,7 +19,7 @@ jobs:
 
       - name: Build the app
         env: 
-          VITE_SECRET_KEY: ${{ secrets.VITE_SECRET_KEY }}
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
         run: npm run build
         
       - name: Deploy 🚀
