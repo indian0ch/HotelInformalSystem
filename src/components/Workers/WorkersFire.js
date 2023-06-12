@@ -1,19 +1,16 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import styles from "./WorkersAdd.module.css";
 import { FireWorkersCommand } from "./WorkersCommand.ts";
 import Button from "../UI/Button/Button";
 
 const WorkersFire = (props) => {
-  const [employeeId, setEmployeeId] = useState("");
-  
-  function onChangeIdHandler(event) {
-    setEmployeeId(event.target.value);
-  }
+  const employeeId = useRef();
+
   function onSubmitFormHandler(event) {
     event.preventDefault();
-    props.manager.SetCommand(new FireWorkersCommand(employeeId));
+    props.manager.SetCommand(new FireWorkersCommand(employeeId.current.value));
     props.manager.ExecuteCommands();
-    setEmployeeId("");
+    employeeId.current.value = "";
   }
 
   return (
@@ -21,12 +18,7 @@ const WorkersFire = (props) => {
       <h2>Fire employee</h2>
       <form onSubmit={onSubmitFormHandler}>
         <label htmlFor="employeeId">Employee's id:</label>
-        <input
-          type="number"
-          name="employeeId"
-          value={employeeId}
-          onChange={onChangeIdHandler}
-        ></input>
+        <input type="number" name="employeeId" ref={employeeId}></input>
         <Button>Submit</Button>
       </form>
     </div>

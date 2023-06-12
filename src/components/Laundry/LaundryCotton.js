@@ -1,42 +1,30 @@
-import React, { useState } from "react";
+import React, {useRef } from "react";
 import Button from "../UI/Button/Button";
 import { CottonLaundryStrategy } from "./LaundryStrategy.ts";
 
 const LaundryCotton = (props) => {
-  const [cottonPercentage, setCottonPercentage] = useState();
-  const [cottonTemperature, setCottonTemperature] = useState();
+  const cottonPercentage = useRef();
+  const cottonTemperature = useRef();
 
-  function onChangePercentageHandler(event) {
-    setCottonPercentage(event.target.value);
-  }
-  function onChangeTemperatureHandler(event) {
-    setCottonTemperature(event.target.value);
-  }
   function onClickHandler(event) {
     event.preventDefault();
     const cottonStrategy = new CottonLaundryStrategy(
       props.weight,
-      cottonPercentage,
-      cottonTemperature
+      cottonPercentage.current.value,
+      cottonTemperature.current.value
     );
     props.laundryContext.setStrategy(cottonStrategy);
     props.laundryContext.executeLaundry();
+    cottonPercentage.current.value = "";
+    cottonTemperature.current.value = "";
   }
 
   return (
     <div>
       <label>Put cotton's percentage:</label>
-      <input
-        type="number"
-        value={cottonPercentage}
-        onChange={onChangePercentageHandler}
-      ></input>
+      <input type="number" ref={cottonPercentage}></input>
       <label>Put choosen temperature:</label>
-      <input
-        type="number"
-        value={cottonTemperature}
-        onChange={onChangeTemperatureHandler}
-      ></input>
+      <input type="number" ref={cottonTemperature}></input>
       <Button onClick={onClickHandler}>Check washing info</Button>
     </div>
   );

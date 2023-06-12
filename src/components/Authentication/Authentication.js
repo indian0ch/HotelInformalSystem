@@ -20,7 +20,6 @@ function Authentication(props) {
 
   return (
     <div className={styles.authenticationContainer}>
-      <div>
         {isLoginWindowOpen === true && (
           <Login
             onContinue={onContinueHandler}
@@ -33,7 +32,6 @@ function Authentication(props) {
             authServices={authService}
           ></Workers>
         )}
-      </div>
     </div>
   );
 }

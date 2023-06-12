@@ -8,6 +8,7 @@ const ListService = (props) => {
   const [parkingStatus, setParkingStatus] = useState(false);
   const [fitnessStatus, setFitnessStatus] = useState(false);
   const [roomStatus, setRoomStatus] = useState(false);
+
   function sendDataHandler(type) {
     switch (type) {
       case "Dinner":
@@ -27,6 +28,7 @@ const ListService = (props) => {
         break;
     }
   }
+
   useEffect(() => {
     const updatedArr = [
       { type: "Dinner", status: dinnerStatus },
@@ -37,6 +39,7 @@ const ListService = (props) => {
     ];
     props.sendData(updatedArr);
   }, [dinnerStatus, lunchStatus, parkingStatus, fitnessStatus, roomStatus]);
+  
   return (
     <div className={styles.bod}>
       <fieldset className={styles["checkbox-group"]}>

@@ -1,29 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Review.module.css";
 import { HotelAdministration, ResidentReviews } from "./ReviewObserver.ts";
 import Button from "../UI/Button/Button";
 
 const Review = (props) => {
-  const [residentName, setResidentName] = useState("");
-  const [reviewText, setReviewText] = useState("");
+  const residentName = useRef();
+  const reviewText = useRef();
   const [reviewerName, setReviewerName] = useState("Andrii Fesiuk");
   const [reviewerLevel, setReviewerLevel] = useState("0");
-  function onChangeResidentNameHandler(event) {
-    setResidentName(event.target.value);
-  }
-  function onChangeAreaHandler(event) {
-    setReviewText(event.target.value);
-  }
+
   function onChangeSelectHandler(event) {
     setReviewerName(event.target.value);
   }
+
   function onChangeLevelHandler(event) {
     setReviewerLevel(event.target.value);
   }
+  
   function onSubmitFormHandler(event) {
     event.preventDefault();
     const administator = new HotelAdministration(reviewerName);
-    const review = new ResidentReviews(residentName, reviewText);
+    const review = new ResidentReviews(
+      residentName.current.value,
+      reviewText.current.value
+    );
     review.attach(administator);
     review.SatisfactionLevelSet = reviewerLevel;
   }
@@ -36,14 +36,14 @@ const Review = (props) => {
         <input
           type="text"
           placeholder="Andrii Fesik"
-          onChange={onChangeResidentNameHandler}
+          ref={residentName}
         ></input>
         <label htmlFor="reviewT">Write your review about the Hotel:</label>
         <textarea
           type="text"
           name="reviewT"
           placeholder="Review's text"
-          onChange={onChangeAreaHandler}
+          ref={reviewText}
         ></textarea>
         <div className={styles.reviewerSection}>
           <label
@@ -57,9 +57,7 @@ const Review = (props) => {
             className={styles.reviewSelect}
           >
             <option value="Andrii Fesiuk">Andrii Fesiuk, Principle</option>
-            <option value="Maks">
-              Maks Bondarenko, Host-Administartor
-            </option>
+            <option value="Maks">Maks Bondarenko, Host-Administartor</option>
           </select>
         </div>
         <div className={styles.levelSection}>

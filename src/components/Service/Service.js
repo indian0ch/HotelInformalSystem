@@ -51,8 +51,10 @@ const Service = (props) => {
     event.preventDefault();
     let baseService = new BaseComponent();
     let filterArr = clicks.filter((elem) => elem.status === true);
+
     if (filterArr.length !== 0) {
       let component = undefined;
+      
       for (let i = 0; i < filterArr.length; i++) {
         switch (filterArr[i].type) {
           case hotelServices[0].type:
@@ -73,14 +75,17 @@ const Service = (props) => {
         }
         baseService = component;
       }
+
     }
     alert(baseService.operation());
     setActualPrice(baseService.getAmount());
     props.sendServices(baseService);
   }
+
   const onGetDataFromItems = (data) => {
     setClicks(data);
   };
+
   return (
     <div className={styles.serviceContainer}>
       <p>

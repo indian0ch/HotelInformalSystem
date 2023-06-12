@@ -24,6 +24,7 @@ const Workers = (props) => {
     props.authServices.logout();
     props.onLogOut();
   }
+  
   return (
     <div className={styles.workersContainer}>
       <h2>Workers management module</h2>

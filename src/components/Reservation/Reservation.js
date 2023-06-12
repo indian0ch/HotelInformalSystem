@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Reservation.module.css";
 import { ReservationRoom, ReservationRoomFacade } from "./ReservationFacade.ts";
 import Button from "../UI/Button/Button.js";
@@ -6,29 +6,18 @@ import Service from "../Service/Service";
 
 const Reservation = (props) => {
   const [priceRoom, setPriceRoom] = useState(100);
-  const [nameUser, setNameUser] = useState("");
-  const [emailUser, setEmailUser] = useState("");
-  const [idUser, setIDUser] = useState("");
-  const [phoneNumberUser, setPhoneNumberUser] = useState("");
+  const [priceService, setPriceService] = useState(0);
   const [arraivedDate, setArraivedDate] = useState("");
   const [outDate, setOutDate] = useState("");
-  const [priceService, setPriceService] = useState(0);
+  const nameUser = useRef();
+  const emailUser = useRef();
+  const idUser = useRef();
+  const phoneNumberUser = useRef();
 
-  function onChangeName(event) {
-    setNameUser(event.target.value);
-  }
-  function onChangeEmail(event) {
-    setEmailUser(event.target.value);
-  }
-  function onChangePhone(event) {
-    setPhoneNumberUser(event.target.value);
-  }
-  function onChangeID(event) {
-    setIDUser(event.target.value);
-  }
   function onChangePriceHandler(event) {
     setPriceRoom(event.target.value);
   }
+
   function onChangeArraivedDate(event) {
     if (event.target.value > outDate && outDate !== "") {
       alert("Out date earlier than arrived)");
@@ -36,6 +25,7 @@ const Reservation = (props) => {
       setArraivedDate(event.target.value);
     }
   }
+
   function onChangeOutDate(event) {
     if (arraivedDate > event.target.value) {
       alert("Out date earlier than arrived)");
@@ -43,16 +33,18 @@ const Reservation = (props) => {
       setOutDate(event.target.value);
     }
   }
+
   function onSendServiceHandler(baseComponent) {
     setPriceService(baseComponent.getAmount());
     console.log(baseComponent.getAmount());
   }
+
   function checkValidation() {
     if (
-      nameUser !== "" &&
-      emailUser !== "" &&
-      idUser !== "" &&
-      phoneNumberUser !== "" &&
+      nameUser.current.value !== "" &&
+      emailUser.current.value !== "" &&
+      idUser.current.value !== "" &&
+      phoneNumberUser.current.value !== "" &&
       arraivedDate !== "" &&
       outDate !== ""
     ) {
@@ -60,31 +52,36 @@ const Reservation = (props) => {
     }
     return false;
   }
+
   function cleanInputs() {
-    setNameUser("");
-    setEmailUser("");
-    setIDUser("");
-    setPhoneNumberUser("");
+    nameUser.current.value = "";
+    emailUser.current.value = "";
+    idUser.current.value = "";
+    phoneNumberUser.current.value = "";
     setArraivedDate("");
     setOutDate("");
   }
+
   function onSubmitFormHandler(event) {
     event.preventDefault();
+
     if (checkValidation() === true) {
-      let totalCount =
+      let totalSumCount =
         ((new Date(outDate) - new Date(arraivedDate)) / (1000 * 60 * 60 * 24)) *
           priceRoom +
         priceService;
+
       let resroom = new ReservationRoom(
-        nameUser,
-        phoneNumberUser,
-        idUser,
-        emailUser,
+        nameUser.current.value,
+        phoneNumberUser.current.value,
+        idUser.current.value,
+        emailUser.current.value,
         arraivedDate,
         outDate,
         priceRoom,
-        totalCount
+        totalSumCount
       );
+
       let res = new ReservationRoomFacade(resroom);
       res.doReservation();
       cleanInputs();
@@ -98,33 +95,13 @@ const Reservation = (props) => {
       <h2>Rooms' reservation section</h2>
       <form onSubmit={onSubmitFormHandler}>
         <label htmlFor="nameUser">Your Full Name:</label>
-        <input
-          type="text"
-          name="nameUser"
-          onChange={onChangeName}
-          value={nameUser}
-        ></input>
+        <input type="text" name="nameUser" ref={nameUser}></input>
         <label htmlFor="emailUser">Your email:</label>
-        <input
-          type="text"
-          name="emailUser"
-          onChange={onChangeEmail}
-          value={emailUser}
-        ></input>
+        <input type="text" name="emailUser" ref={emailUser}></input>
         <label htmlFor="phoneUser">Your phone number:</label>
-        <input
-          type="text"
-          name="phoneUser"
-          onChange={onChangePhone}
-          value={phoneNumberUser}
-        ></input>
+        <input type="text" name="phoneUser" ref={phoneNumberUser}></input>
         <label htmlFor="idUser">Passport ID:</label>
-        <input
-          type="number"
-          name="idUser"
-          onChange={onChangeID}
-          value={idUser}
-        ></input>
+        <input type="number" name="idUser" ref={idUser}></input>
         <label htmlFor="dateArrived">Arrived date:</label>
         <input
           type="date"

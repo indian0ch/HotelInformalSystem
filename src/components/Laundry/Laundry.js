@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import styles from "./Laundry.module.css";
 import Button from "../UI/Button/Button";
 import { LaundryContext, StandardLaundryStrategy } from "./LaundryStrategy.ts";
@@ -7,18 +7,12 @@ import LaundryCotton from "./LaundryCotton";
 
 const Laundry = (props) => {
   const [washingType, setWashingType] = useState("Standard");
-  const [washingWeight, setWashingWeight] = useState();
-  const laundry = new LaundryContext();
-  //const [washingWeight, setWashingWeight] = useState('');
+  const washingWeight = useRef();
 
-  //   function onClickAddHandler() {
-  //     setWhichEmplyeeButtonActive("Add");
-  //   }
+  const laundry = new LaundryContext();
+
   function onChangeSelectHandler(event) {
     setWashingType(event.target.value);
-  }
-  function onChangeWeightHandler(event) {
-    setWashingWeight(event.target.value);
   }
   function onClickButtonHandler(event) {
     event.preventDefault();
@@ -32,12 +26,7 @@ const Laundry = (props) => {
       <h2>Laundry module</h2>
       <div>
         <label htmlFor="cloWeight">Enter clothe's weight(kg):</label>
-        <input
-          type="number"
-          name="cloWeight"
-          value={washingWeight}
-          onChange={onChangeWeightHandler}
-        ></input>
+        <input type="number" name="cloWeight" ref={washingWeight}></input>
         <label>Choose clothe's type:</label>
         <select onChange={onChangeSelectHandler}>
           <option value="Standard">Standard</option>
@@ -47,13 +36,13 @@ const Laundry = (props) => {
         {washingType === "Synthetics" && (
           <LaundrySynthetics
             laundryContext={laundry}
-            weight={washingWeight}
+            weight={washingWeight.current.value}
           ></LaundrySynthetics>
         )}
         {washingType === "Cotton" && (
           <LaundryCotton
             laundryContext={laundry}
-            weight={washingWeight}
+            weight={washingWeight.current.value}
           ></LaundryCotton>
         )}
         {washingType === "Standard" && (
