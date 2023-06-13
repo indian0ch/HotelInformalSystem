@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./Authentication.module.css";
 import { AuthenticationService, ProxyService } from "./AuthenticationProxy.ts";
 import Login from "./Login";
@@ -9,29 +9,36 @@ function Authentication(props) {
   const authService = new ProxyService(new AuthenticationService());
 
   function onContinueHandler() {
-    console.log(authService.getStatus());
     if (authService.getStatus() === true) {
       setIsLoginWindowOpen(false);
+      localStorage.setItem("isLogged", "yes");
     }
   }
   function onLogOutHandler() {
     setIsLoginWindowOpen(true);
+    localStorage.setItem("isLogged", "no");
   }
+
+  useEffect(() => {
+    if (localStorage.getItem("isLogged") === "yes") {
+      setIsLoginWindowOpen(false);
+    }
+  }, []);
 
   return (
     <div className={styles.authenticationContainer}>
-        {isLoginWindowOpen === true && (
-          <Login
-            onContinue={onContinueHandler}
-            authServices={authService}
-          ></Login>
-        )}
-        {isLoginWindowOpen === false && (
-          <Workers
-            onLogOut={onLogOutHandler}
-            authServices={authService}
-          ></Workers>
-        )}
+      {isLoginWindowOpen === true && (
+        <Login
+          onContinue={onContinueHandler}
+          authServices={authService}
+        ></Login>
+      )}
+      {isLoginWindowOpen === false && (
+        <Workers
+          onLogOut={onLogOutHandler}
+          authServices={authService}
+        ></Workers>
+      )}
     </div>
   );
 }
