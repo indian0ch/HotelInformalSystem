@@ -1,14 +1,40 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useReducer } from "react";
 import styles from "./Reservation.module.css";
 import { ReservationRoom, ReservationRoomFacade } from "./ReservationFacade.ts";
 import Button from "../UI/Button/Button.js";
 import Service from "../Service/Service";
 
+function reducerDate(state, action) {
+  switch (action.type) {
+    case "Change_Arrived_Date": {
+      if (action.val > state.outDate && state.outDate !== "") {
+        alert("Out date earlier than arrived)");
+        return { arraivedDate: state.arraivedDate, outDate: state.outDate };
+      } else {
+        return { arraivedDate: action.val, outDate: state.outDate };
+      }
+    }
+    case "Change_Out_Date": {
+      if (state.arraivedDate > action.val) {
+        alert("Out date earlier than arrived)");
+        return { arraivedDate: state.arraivedDate, outDate: state.outDate };
+      } else {
+        return { arraivedDate: state.arraivedDate, outDate: action.val };
+      }
+    }
+    case "Clean": {
+      return { arraivedDate: "", outDate: "" };
+    }
+  }
+}
+
 const Reservation = (props) => {
+  const [stateDate, dispatchDate] = useReducer(reducerDate, {
+    arraivedDate: "",
+    outDate: "",
+  });
   const [priceRoom, setPriceRoom] = useState(100);
   const [priceService, setPriceService] = useState(0);
-  const [arraivedDate, setArraivedDate] = useState("");
-  const [outDate, setOutDate] = useState("");
   const nameUser = useRef();
   const emailUser = useRef();
   const idUser = useRef();
@@ -19,24 +45,16 @@ const Reservation = (props) => {
   }
 
   function onChangeArraivedDate(event) {
-    if (event.target.value > outDate && outDate !== "") {
-      alert("Out date earlier than arrived)");
-    } else {
-      setArraivedDate(event.target.value);
-    }
+    dispatchDate({ type: "Change_Arrived_Date", val: event.target.value });
+    console.log(stateDate);
   }
 
   function onChangeOutDate(event) {
-    if (arraivedDate > event.target.value) {
-      alert("Out date earlier than arrived)");
-    } else {
-      setOutDate(event.target.value);
-    }
+    dispatchDate({ type: "Change_Out_Date", val: event.target.value });
   }
 
   function onSendServiceHandler(baseComponent) {
     setPriceService(baseComponent.getAmount());
-    console.log(baseComponent.getAmount());
   }
 
   function checkValidation() {
@@ -45,8 +63,8 @@ const Reservation = (props) => {
       emailUser.current.value !== "" &&
       idUser.current.value !== "" &&
       phoneNumberUser.current.value !== "" &&
-      arraivedDate !== "" &&
-      outDate !== ""
+      stateDate.arraivedDate !== "" &&
+      stateDate.outDate !== ""
     ) {
       return true;
     }
@@ -58,8 +76,7 @@ const Reservation = (props) => {
     emailUser.current.value = "";
     idUser.current.value = "";
     phoneNumberUser.current.value = "";
-    setArraivedDate("");
-    setOutDate("");
+    dispatchDate({ type: "Clean" });
   }
 
   function onSubmitFormHandler(event) {
@@ -67,7 +84,8 @@ const Reservation = (props) => {
 
     if (checkValidation() === true) {
       let totalSumCount =
-        ((new Date(outDate) - new Date(arraivedDate)) / (1000 * 60 * 60 * 24)) *
+        ((new Date(stateDate.outDate) - new Date(stateDate.arraivedDate)) /
+          (1000 * 60 * 60 * 24)) *
           priceRoom +
         priceService;
 
@@ -76,8 +94,8 @@ const Reservation = (props) => {
         phoneNumberUser.current.value,
         idUser.current.value,
         emailUser.current.value,
-        arraivedDate,
-        outDate,
+        stateDate.arraivedDate,
+        stateDate.outDate,
         priceRoom,
         totalSumCount
       );
@@ -107,7 +125,7 @@ const Reservation = (props) => {
           type="date"
           name="dateArrived"
           max=""
-          value={arraivedDate}
+          value={stateDate.arraivedDate}
           onChange={onChangeArraivedDate}
         ></input>
         <label htmlFor="dateOut">Out date:</label>
@@ -115,7 +133,7 @@ const Reservation = (props) => {
           type="date"
           name="dateOut"
           max=""
-          value={outDate}
+          value={stateDate.outDate}
           onChange={onChangeOutDate}
         ></input>
         <label htmlFor="roomUser">Room's type:</label>

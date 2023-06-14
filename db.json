@@ -129,9 +129,9 @@
     {
       "id": 14,
       "roomNumber": 205,
-      "checkInDate": null,
-      "checkOutDate": null,
-      "guestId": null,
+      "checkInDate": "2023-06-16",
+      "checkOutDate": "2023-06-30",
+      "guestId": "3421",
       "isCleaned": false,
       "pricePerNight": 200
     },
@@ -208,6 +208,12 @@
       "name": "Andreww",
       "email": "maswk@gmail.com",
       "phoneNumber": "43555656"
+    },
+    {
+      "id": "3421",
+      "name": "Ssdc",
+      "email": "maks@gmail.com",
+      "phoneNumber": "0685087867"
     }
   ],
   "workers": [
