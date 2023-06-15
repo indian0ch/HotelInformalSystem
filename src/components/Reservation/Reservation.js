@@ -3,6 +3,7 @@ import styles from "./Reservation.module.css";
 import { ReservationRoom, ReservationRoomFacade } from "./ReservationFacade.ts";
 import Button from "../UI/Button/Button.js";
 import Service from "../Service/Service";
+import Input from "../UI/Button/Input";
 
 function reducerDate(state, action) {
   switch (action.type) {
@@ -120,22 +121,20 @@ const Reservation = (props) => {
         <input type="text" name="phoneUser" ref={phoneNumberUser}></input>
         <label htmlFor="idUser">Passport ID:</label>
         <input type="number" name="idUser" ref={idUser}></input>
-        <label htmlFor="dateArrived">Arrived date:</label>
-        <input
+        <Input
+          text="Arrived date:"
           type="date"
           name="dateArrived"
-          max=""
           value={stateDate.arraivedDate}
           onChange={onChangeArraivedDate}
-        ></input>
-        <label htmlFor="dateOut">Out date:</label>
-        <input
+        ></Input>
+        <Input
+          text="Out date:"
           type="date"
           name="dateOut"
-          max=""
           value={stateDate.outDate}
           onChange={onChangeOutDate}
-        ></input>
+        ></Input>
         <label htmlFor="roomUser">Room's type:</label>
         <div>
           <select
