@@ -24,7 +24,7 @@ p {
     margin-bottom: 0.5rem;
 }
 
-.laundryContainer input,
+.laundryContainer 
 select {
     font: inherit;
     display: block;
@@ -32,11 +32,6 @@ select {
     border: 1px solid #ccc;
     padding: 0.15rem;
     margin-bottom: 0.5rem;
-}
-
-.laundryContainer input:focus {
-    outline: none;
-    border-color: #4f005f;
 }
 
 .sectionBox {

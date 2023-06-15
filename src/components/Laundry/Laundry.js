@@ -4,6 +4,7 @@ import Button from "../UI/Button/Button";
 import { LaundryContext, StandardLaundryStrategy } from "./LaundryStrategy.ts";
 import LaundrySynthetics from "./LaundrySynthetics.js";
 import LaundryCotton from "./LaundryCotton";
+import InputRef from "../UI/Button/InputRef";
 
 const Laundry = (props) => {
   const [washingType, setWashingType] = useState("Standard");
@@ -25,8 +26,12 @@ const Laundry = (props) => {
     <div className={styles.laundryContainer}>
       <h2>Laundry module</h2>
       <div>
-        <label htmlFor="cloWeight">Enter clothe's weight(kg):</label>
-        <input type="number" name="cloWeight" ref={washingWeight}></input>
+        <InputRef
+          text="Enter clothe's weight(kg):"
+          name="cloWeight"
+          type="number"
+          ref={washingWeight}
+        ></InputRef>
         <label>Choose clothe's type:</label>
         <select onChange={onChangeSelectHandler}>
           <option value="Standard">Standard</option>

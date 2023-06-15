@@ -1,6 +1,7 @@
-import React, {useRef } from "react";
+import React, { useRef } from "react";
 import Button from "../UI/Button/Button";
 import { CottonLaundryStrategy } from "./LaundryStrategy.ts";
+import InputRef from "../UI/Button/InputRef";
 
 const LaundryCotton = (props) => {
   const cottonPercentage = useRef();
@@ -21,10 +22,18 @@ const LaundryCotton = (props) => {
 
   return (
     <div>
-      <label>Put cotton's percentage:</label>
-      <input type="number" ref={cottonPercentage}></input>
-      <label>Put choosen temperature:</label>
-      <input type="number" ref={cottonTemperature}></input>
+      <InputRef
+        text="Put cotton's percentage:"
+        name="cloPercentage"
+        type="number"
+        ref={cottonPercentage}
+      ></InputRef>
+      <InputRef
+        text="Put choosen temperature:"
+        name="cloTemperatur"
+        type="number"
+        ref={cottonTemperature}
+      ></InputRef>
       <Button onClick={onClickHandler}>Check washing info</Button>
     </div>
   );

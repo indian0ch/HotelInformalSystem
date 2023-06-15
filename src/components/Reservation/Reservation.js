@@ -4,6 +4,7 @@ import { ReservationRoom, ReservationRoomFacade } from "./ReservationFacade.ts";
 import Button from "../UI/Button/Button.js";
 import Service from "../Service/Service";
 import Input from "../UI/Button/Input";
+import InputRef from "../UI/Button/InputRef";
 
 function reducerDate(state, action) {
   switch (action.type) {
@@ -113,14 +114,10 @@ const Reservation = (props) => {
     <div className={styles.reservationContainer}>
       <h2>Rooms' reservation section</h2>
       <form onSubmit={onSubmitFormHandler}>
-        <label htmlFor="nameUser">Your Full Name:</label>
-        <input type="text" name="nameUser" ref={nameUser}></input>
-        <label htmlFor="emailUser">Your email:</label>
-        <input type="text" name="emailUser" ref={emailUser}></input>
-        <label htmlFor="phoneUser">Your phone number:</label>
-        <input type="text" name="phoneUser" ref={phoneNumberUser}></input>
-        <label htmlFor="idUser">Passport ID:</label>
-        <input type="number" name="idUser" ref={idUser}></input>
+        <InputRef text="Your Full Name:" name="nameUser" type="text" ref={nameUser}></InputRef>
+        <InputRef text="Your email:" name="emailUser" type="text" ref={emailUser}></InputRef>
+        <InputRef text="Your phone number:" name="phoneUser" type="text" ref={phoneNumberUser}></InputRef>
+        <InputRef text="Passport ID:" name="idUser" type="number" ref={idUser}></InputRef>
         <Input
           text="Arrived date:"
           type="date"
