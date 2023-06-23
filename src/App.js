@@ -13,7 +13,7 @@ const App = () => {
     <BrowserRouter>
       <div className={styled.blockPage}>
         <div className={styled.linksColumn}>
-          <Link to="/">Home </Link>
+          <Link to="/HotelInformalSystem">Home </Link>
           <Link to="/reservation">Reservation module</Link>
           <Link to="/payments">Payments module</Link>
           <Link to="/review">Review module</Link>
@@ -22,7 +22,7 @@ const App = () => {
         </div>
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/HotelInformalSystem" element={<Home />} />
           <Route path="/reservation" element={<Reservation />} />
           <Route path="/payments" element={<Payments />} />
           <Route path="/review" element={<Review />} />

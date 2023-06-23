@@ -27,11 +27,10 @@ const Laundry = (props) => {
       <h2>Laundry module</h2>
       <div>
         <InputRef
-          text="Enter clothe's weight(kg):"
           name="cloWeight"
           type="number"
           ref={washingWeight}
-        ></InputRef>
+        >Enter clothe's weight(kg):</InputRef>
         <label>Choose clothe's type:</label>
         <select onChange={onChangeSelectHandler}>
           <option value="Standard">Standard</option>

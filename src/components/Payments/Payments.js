@@ -3,6 +3,8 @@ import styles from "./Payments.module.css";
 import { PaymentFactory } from "./PaymentsFactoryMethod.ts";
 import Button from "../UI/Button/Button";
 import { getGuests, modifyGuest } from "../../classes/Guest.ts";
+import Input from "../UI/Button/Input";
+import InputRef from "../UI/Button/InputRef";
 
 const Payments = (props) => {
   const userId = useRef();
@@ -57,13 +59,15 @@ const Payments = (props) => {
   return (
     <div className={styles.paymentsContainer}>
       <h2>Payments section</h2>
-      <label htmlFor="idUser">Your passport id:</label>
-      <input type="text" name="idUser" ref={userId}></input>
+      <InputRef name="idUser" type="text" ref={userId}>
+        Your passport id:
+      </InputRef>
       <Button onClick={onClickCheckHandler}>View check</Button>
       <p>Check:{userDoubt}$</p>
       <form>
-        <label htmlFor="sumUser">Enter sum:</label>
-        <input type="text" name="sumUser" ref={userSumInput}></input>
+        <InputRef name="sumUser" type="text" ref={userSumInput}>
+          Enter sum:
+        </InputRef>
         <div>
           <select
             name="paymentsUser"

@@ -3,15 +3,13 @@ function sendMessage(text) {
     token: "5855579399:AAFwa7JV6xt8kj7FhhmhEfHwMlCzQqb0ieI",
     chat_id: "-1001876151539",
   };
+  
   const url = `https://api.telegram.org/bot${tg.token}/sendMessage`;
   const obj = {
     chat_id: tg.chat_id,
     text: text,
   };
-  //   const xht = new XMLHttpRequest();
-  //   xht.open("POST", url, true);
-  //   xht.setRequestHeader("Content-type", "application/json; charset=UTF-8");
-  //   xht.send(JSON.stringify(obj));
+
   fetch(url, {
     headers: {
       Accept: "application/json",

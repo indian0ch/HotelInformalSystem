@@ -36,8 +36,10 @@ const Reservation = (props) => {
     arraivedDate: "",
     outDate: "",
   });
+
   const [priceRoom, setPriceRoom] = useState(100);
   const [priceService, setPriceService] = useState(0);
+
   const nameUser = useRef();
   const emailUser = useRef();
   const idUser = useRef();
@@ -46,29 +48,18 @@ const Reservation = (props) => {
   function onChangePriceHandler(event) {
     setPriceRoom(event.target.value);
   }
-
   function onChangeArraivedDate(event) {
     dispatchDate({ type: "Change_Arrived_Date", val: event.target.value });
     console.log(stateDate);
   }
-
   function onChangeOutDate(event) {
     dispatchDate({ type: "Change_Out_Date", val: event.target.value });
   }
-
   function onSendServiceHandler(baseComponent) {
     setPriceService(baseComponent.getAmount());
   }
-
   function checkValidation() {
-    if (
-      nameUser.current.value !== "" &&
-      emailUser.current.value !== "" &&
-      idUser.current.value !== "" &&
-      phoneNumberUser.current.value !== "" &&
-      stateDate.arraivedDate !== "" &&
-      stateDate.outDate !== ""
-    ) {
+    if (stateDate.arraivedDate !== "" && stateDate.outDate !== "") {
       return true;
     }
     return false;
@@ -116,29 +107,25 @@ const Reservation = (props) => {
       <h2>Rooms' reservation section</h2>
       <form id=".form" onSubmit={onSubmitFormHandler}>
         <InputRef
-          text="Your Full Name:"
           name="nameUser"
           type="text"
           ref={nameUser}
-        ></InputRef>
+        >Your Full Name:</InputRef>
         <InputRef
-          text="Your email:"
           name="emailUser"
           type="text"
           ref={emailUser}
-        ></InputRef>
+        >Your email:</InputRef>
         <InputRef
-          text="Your phone number:"
           name="phoneUser"
           type="text"
           ref={phoneNumberUser}
-        ></InputRef>
+        >Your phone number:</InputRef>
         <InputRef
-          text="Passport ID:"
           name="idUser"
           type="number"
           ref={idUser}
-        ></InputRef>
+        >Passport ID:</InputRef>
         <Input
           text="Arrived date:"
           type="date"
