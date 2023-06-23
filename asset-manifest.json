@@ -1,13 +1,13 @@
 {
   "files": {
-    "main.css": "/HotelInformalSystem/static/css/main.6dcc6c33.css",
-    "main.js": "/HotelInformalSystem/static/js/main.2e3b7107.js",
+    "main.css": "/HotelInformalSystem/static/css/main.59025ff8.css",
+    "main.js": "/HotelInformalSystem/static/js/main.1386d3df.js",
     "index.html": "/HotelInformalSystem/index.html",
-    "main.6dcc6c33.css.map": "/HotelInformalSystem/static/css/main.6dcc6c33.css.map",
-    "main.2e3b7107.js.map": "/HotelInformalSystem/static/js/main.2e3b7107.js.map"
+    "main.59025ff8.css.map": "/HotelInformalSystem/static/css/main.59025ff8.css.map",
+    "main.1386d3df.js.map": "/HotelInformalSystem/static/js/main.1386d3df.js.map"
   },
   "entrypoints": [
-    "static/css/main.6dcc6c33.css",
-    "static/js/main.2e3b7107.js"
+    "static/css/main.59025ff8.css",
+    "static/js/main.1386d3df.js"
   ]
 }
