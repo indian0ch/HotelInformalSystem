@@ -5,6 +5,7 @@ import Button from "../UI/Button/Button.js";
 import Service from "../Service/Service";
 import Input from "../UI/Button/Input";
 import InputRef from "../UI/Button/InputRef";
+import sendMessage from "./sendmessage";
 
 function reducerDate(state, action) {
   switch (action.type) {
@@ -81,10 +82,10 @@ const Reservation = (props) => {
     dispatchDate({ type: "Clean" });
   }
 
-  function onSubmitFormHandler(event) {
+  async function onSubmitFormHandler(event) {
     event.preventDefault();
 
-    if (checkValidation() === true) {
+    if (checkValidation() === false) {
       let totalSumCount =
         ((new Date(stateDate.outDate) - new Date(stateDate.arraivedDate)) /
           (1000 * 60 * 60 * 24)) *
@@ -101,9 +102,9 @@ const Reservation = (props) => {
         priceRoom,
         totalSumCount
       );
-
-      let res = new ReservationRoomFacade(resroom);
-      res.doReservation();
+      sendMessage(resroom);
+      // let res = new ReservationRoomFacade(resroom);
+      // res.doReservation();
       cleanInputs();
     } else {
       alert("Some fields are underfined!");
@@ -113,11 +114,31 @@ const Reservation = (props) => {
   return (
     <div className={styles.reservationContainer}>
       <h2>Rooms' reservation section</h2>
-      <form onSubmit={onSubmitFormHandler}>
-        <InputRef text="Your Full Name:" name="nameUser" type="text" ref={nameUser}></InputRef>
-        <InputRef text="Your email:" name="emailUser" type="text" ref={emailUser}></InputRef>
-        <InputRef text="Your phone number:" name="phoneUser" type="text" ref={phoneNumberUser}></InputRef>
-        <InputRef text="Passport ID:" name="idUser" type="number" ref={idUser}></InputRef>
+      <form id=".form" onSubmit={onSubmitFormHandler}>
+        <InputRef
+          text="Your Full Name:"
+          name="nameUser"
+          type="text"
+          ref={nameUser}
+        ></InputRef>
+        <InputRef
+          text="Your email:"
+          name="emailUser"
+          type="text"
+          ref={emailUser}
+        ></InputRef>
+        <InputRef
+          text="Your phone number:"
+          name="phoneUser"
+          type="text"
+          ref={phoneNumberUser}
+        ></InputRef>
+        <InputRef
+          text="Passport ID:"
+          name="idUser"
+          type="number"
+          ref={idUser}
+        ></InputRef>
         <Input
           text="Arrived date:"
           type="date"
